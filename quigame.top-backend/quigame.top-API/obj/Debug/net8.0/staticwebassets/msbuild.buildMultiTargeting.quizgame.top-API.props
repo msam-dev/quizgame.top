@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\quizgame.top-API.props" />
+</Project>
