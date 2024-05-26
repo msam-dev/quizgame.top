@@ -9,6 +9,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{2EEB112E-917D-4A03-BF26-95854CF2B265}|quizgame.top-API\\quizgame.top-API.csproj|c:\\repos\\quizgame.top_source_code\\quizgame.top-backend\\quizgame.top-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2EEB112E-917D-4A03-BF26-95854CF2B265}|quizgame.top-API\\quizgame.top-API.csproj|solutionrelative:quizgame.top-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EEB112E-917D-4A03-BF26-95854CF2B265}|quizgame.top-API\\quizgame.top.API.csproj|c:\\repos\\quizgame.top_source_code\\quizgame.top-backend\\quizgame.top-api\\quizgame.top.api.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{2EEB112E-917D-4A03-BF26-95854CF2B265}|quizgame.top-API\\quizgame.top.API.csproj|solutionrelative:quizgame.top-api\\quizgame.top.api.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,20 +38,28 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "quizgame.top-API",
+              "DocumentMoniker": "C:\\REPOS\\quizgame.top_source_code\\quizgame.top-backend\\quizgame.top-API\\quizgame.top.API.csproj",
+              "RelativeDocumentMoniker": "quizgame.top-API\\quizgame.top.API.csproj",
+              "ToolTip": "C:\\REPOS\\quizgame.top_source_code\\quizgame.top-backend\\quizgame.top-API\\quizgame.top.API.csproj",
+              "RelativeToolTip": "quizgame.top-API\\quizgame.top.API.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-05-26T01:27:10.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "TestController.cs",
               "DocumentMoniker": "C:\\REPOS\\quizgame.top_source_code\\quizgame.top-backend\\quizgame.top-API\\Controllers\\TestController.cs",
               "RelativeDocumentMoniker": "quizgame.top-API\\Controllers\\TestController.cs",
               "ToolTip": "C:\\REPOS\\quizgame.top_source_code\\quizgame.top-backend\\quizgame.top-API\\Controllers\\TestController.cs",
               "RelativeToolTip": "quizgame.top-API\\Controllers\\TestController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAbAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-26T01:01:10.478Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
@@ -57,9 +69,10 @@
               "RelativeDocumentMoniker": "quizgame.top-API\\Program.cs",
               "ToolTip": "C:\\REPOS\\quizgame.top_source_code\\quizgame.top-backend\\quizgame.top-API\\Program.cs",
               "RelativeToolTip": "quizgame.top-API\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T00:54:02.427Z"
+              "WhenOpened": "2024-05-26T00:54:02.427Z",
+              "EditorCaption": ""
             }
           ]
         }

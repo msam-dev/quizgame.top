@@ -1,23 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace quizgame.top_API.Controllers
+namespace quizgame.top.API.Controllers;
+
+[ApiController]
+[Route("api/test")]
+public class TestController : ControllerBase
 {
-    [ApiController]
-    [Route("api/test")]
-    public class TestController : ControllerBase
+    private readonly ILogger<TestController> Logger;
+
+    public TestController(ILogger<TestController> logger)
     {
-        private readonly ILogger<TestController> Logger;
+        Logger = logger;
+    }
 
-        public TestController(ILogger<TestController> logger)
-        {
-            Logger = logger;
-        }
-
-        [HttpGet("test-endpoint")]
-        public string Get()
-        {
-            Logger.Log(LogLevel.Information, "test-endpoint was called"); 
-            return "The time is: " + DateTime.UtcNow.ToString();
-        }
+    [HttpGet("test-endpoint")]
+    public string Get()
+    {
+        Logger.Log(LogLevel.Information, "test-endpoint was called"); 
+        return "The time is: " + DateTime.UtcNow.ToString();
     }
 }

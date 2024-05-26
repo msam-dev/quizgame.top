@@ -86,7 +86,6 @@ C:\REPOS\quizgame.top_source_code\quizgame.top-backend\quizgame.top-API\bin\Debu
 C:\REPOS\quizgame.top_source_code\quizgame.top-backend\quizgame.top-API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\REPOS\quizgame.top_source_code\quizgame.top-backend\quizgame.top-API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\REPOS\quizgame.top_source_code\quizgame.top-backend\quizgame.top-API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\REPOS\quizgame.top_source_code\quizgame.top-backend\quizgame.top-API\bin\Debug\net8.0\WeCantSpell.Hunspell.dll
 C:\REPOS\quizgame.top_source_code\quizgame.top-backend\quizgame.top-API\obj\Debug\net8.0\quizgame.top-API.csproj.AssemblyReference.cache
 C:\REPOS\quizgame.top_source_code\quizgame.top-backend\quizgame.top-API\obj\Debug\net8.0\quizgame.top-API.GeneratedMSBuildEditorConfig.editorconfig
 C:\REPOS\quizgame.top_source_code\quizgame.top-backend\quizgame.top-API\obj\Debug\net8.0\quizgame.top-API.AssemblyInfoInputs.cache

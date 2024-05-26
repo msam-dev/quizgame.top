@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>quizgame.top_API</RootNamespace>
+    <RootNamespace>quizgame.top.API</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
