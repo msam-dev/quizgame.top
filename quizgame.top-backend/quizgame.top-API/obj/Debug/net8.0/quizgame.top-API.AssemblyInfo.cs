@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("quizgame.top-API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa699fb478839d3e4ce997eba86a12f4c9e94047")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e31d79068bb9d3b85a400f19f90e09f5bd63aa0")]
 [assembly: System.Reflection.AssemblyProductAttribute("quizgame.top-API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("quizgame.top-API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
