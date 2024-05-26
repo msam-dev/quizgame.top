@@ -53,10 +53,6 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"
-            },
-            "WeCantSpell.Hunspell": {
-              "target": "Package",
-              "version": "[5.0.0, )"
             }
           },
           "imports": [

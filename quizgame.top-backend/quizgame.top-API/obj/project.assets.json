@@ -301,19 +301,6 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
-      },
-      "WeCantSpell.Hunspell/5.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net8.0/WeCantSpell.Hunspell.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/WeCantSpell.Hunspell.dll": {
-            "related": ".xml"
-          }
-        }
       }
     }
   },
@@ -1032,33 +1019,12 @@
         "swashbuckle.aspnetcore.swaggerui.6.6.2.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
-    },
-    "WeCantSpell.Hunspell/5.0.0": {
-      "sha512": "qTQ1Bg7QiEtVTveL8527Ogo+wG+tdEOyobtM5cbU3Gb+ganOh337vTUvsobjw4WNmHZbJ1BnOqGhG+5iiCWb0Q==",
-      "type": "package",
-      "path": "wecantspell.hunspell/5.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "icon.png",
-        "lib/net6.0/WeCantSpell.Hunspell.dll",
-        "lib/net6.0/WeCantSpell.Hunspell.xml",
-        "lib/net8.0/WeCantSpell.Hunspell.dll",
-        "lib/net8.0/WeCantSpell.Hunspell.xml",
-        "lib/netstandard2.0/WeCantSpell.Hunspell.dll",
-        "lib/netstandard2.0/WeCantSpell.Hunspell.xml",
-        "license.txt",
-        "readme.md",
-        "wecantspell.hunspell.5.0.0.nupkg.sha512",
-        "wecantspell.hunspell.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "Microsoft.EntityFrameworkCore.InMemory >= 8.0.5",
-      "Swashbuckle.AspNetCore >= 6.6.2",
-      "WeCantSpell.Hunspell >= 5.0.0"
+      "Swashbuckle.AspNetCore >= 6.6.2"
     ]
   },
   "packageFolders": {
@@ -1113,10 +1079,6 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.6.2, )"
-          },
-          "WeCantSpell.Hunspell": {
-            "target": "Package",
-            "version": "[5.0.0, )"
           }
         },
         "imports": [

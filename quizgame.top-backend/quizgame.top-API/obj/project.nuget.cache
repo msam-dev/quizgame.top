@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RQCnnpl2IkQ=",
+  "dgSpecHash": "UvYgOixffYE=",
   "success": true,
   "projectFilePath": "C:\\REPOS\\quizgame.top_source_code\\quizgame.top-backend\\quizgame.top-API\\quizgame.top-API.csproj",
   "expectedPackageFiles": [
@@ -21,8 +21,7 @@
     "C:\\Users\\Sam\\.nuget\\packages\\swashbuckle.aspnetcore\\6.6.2\\swashbuckle.aspnetcore.6.6.2.nupkg.sha512",
     "C:\\Users\\Sam\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.6.2\\swashbuckle.aspnetcore.swagger.6.6.2.nupkg.sha512",
     "C:\\Users\\Sam\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.6.2\\swashbuckle.aspnetcore.swaggergen.6.6.2.nupkg.sha512",
-    "C:\\Users\\Sam\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.6.2\\swashbuckle.aspnetcore.swaggerui.6.6.2.nupkg.sha512",
-    "C:\\Users\\Sam\\.nuget\\packages\\wecantspell.hunspell\\5.0.0\\wecantspell.hunspell.5.0.0.nupkg.sha512"
+    "C:\\Users\\Sam\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.6.2\\swashbuckle.aspnetcore.swaggerui.6.6.2.nupkg.sha512"
   ],
   "logs": []
 }

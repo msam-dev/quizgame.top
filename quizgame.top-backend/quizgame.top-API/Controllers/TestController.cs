@@ -16,7 +16,7 @@ namespace quizgame.top_API.Controllers
         [HttpGet("test-endpoint")]
         public string Get()
         {
-            Logger.Log(LogLevel.Information, "test-enpoint was called"); 
+            Logger.Log(LogLevel.Information, "test-endpoint was called"); 
             return "The time is: " + DateTime.UtcNow.ToString();
         }
     }
