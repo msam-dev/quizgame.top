@@ -1067,11 +1067,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\REPOS\\quizgame.top_source_code\\quizgame.top-backend\\quigame.top-API\\quizgame.top-API.csproj",
+      "projectUniqueName": "C:\\REPOS\\quizgame.top_source_code\\quizgame.top-backend\\quizgame.top-API\\quizgame.top-API.csproj",
       "projectName": "quizgame.top-API",
-      "projectPath": "C:\\REPOS\\quizgame.top_source_code\\quizgame.top-backend\\quigame.top-API\\quizgame.top-API.csproj",
+      "projectPath": "C:\\REPOS\\quizgame.top_source_code\\quizgame.top-backend\\quizgame.top-API\\quizgame.top-API.csproj",
       "packagesPath": "C:\\Users\\Sam\\.nuget\\packages\\",
-      "outputPath": "C:\\REPOS\\quizgame.top_source_code\\quizgame.top-backend\\quigame.top-API\\obj\\",
+      "outputPath": "C:\\REPOS\\quizgame.top_source_code\\quizgame.top-backend\\quizgame.top-API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Sam\\AppData\\Roaming\\NuGet\\NuGet.Config",
