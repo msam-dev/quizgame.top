@@ -6,6 +6,8 @@ namespace quizgame.top.API.Controllers;
 [Route("api/test")]
 public class TestController : ControllerBase
 {
+    #region constructor
+
     private readonly ILogger<TestController> Logger;
 
     public TestController(ILogger<TestController> logger)
@@ -13,10 +15,17 @@ public class TestController : ControllerBase
         Logger = logger;
     }
 
+    #endregion
+
+    #region methods
+
     [HttpGet("test-endpoint")]
     public string Get()
     {
         Logger.Log(LogLevel.Information, "test-endpoint was called"); 
         return "The time is: " + DateTime.UtcNow.ToString();
     }
+
+    #endregion
+
 }
