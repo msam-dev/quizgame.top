@@ -1,12 +1,12 @@
 import '../assets/css/Home.css';
 
-function Home() {
+const Home = () => {
   return (
     <>
       <div className="welcome-card">
         Hello : )
       </div>
-    </>
+    </> 
   );
 }
 

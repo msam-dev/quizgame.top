@@ -8,3 +8,9 @@
   text-align: center;
   width: 100%;
 }
+
+.test-button { 
+  align-self: center;
+  text-align: center;
+  width: fit-content;
+}

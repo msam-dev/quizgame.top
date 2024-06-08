@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace quizgame.top.API.Controllers;
@@ -19,11 +21,13 @@ public class TestController : ControllerBase
 
     #region methods
 
+    [EnableCors("policy1")]
     [HttpGet("test-endpoint")]
-    public string Get()
+    public string TestEndpoint()
     {
-        Logger.Log(LogLevel.Information, "test-endpoint was called"); 
-        return "The time is: " + DateTime.UtcNow.ToString();
+        string message = "[{\"message\": \"The time is: " + DateTime.UtcNow.ToString() + "\"}]";
+        Logger.Log(LogLevel.Information, "test-endpoint was called from " + Request.Headers["Referer"].ToString() + " and returned: " + message); 
+        return message;
     }
 
     #endregion
