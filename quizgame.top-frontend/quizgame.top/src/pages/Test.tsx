@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../assets/css/Test.css';
 
 /**
- * A proof of concept function to be used as a template for connecting to API endpoints
+ * A proof of concept to be used as a template for connecting to API endpoints
  * @returns 
  */
 const Test = () => {
@@ -68,7 +68,6 @@ const Test = () => {
             <div className="test-api-response">{apiPostResponse}</div>
           </div>
         </div>
-        
       </div>
     </div>
   );
