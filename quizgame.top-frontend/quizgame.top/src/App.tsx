@@ -8,8 +8,8 @@ const App = () => {
     <Router>
       <Routes>
         <Route path = "/"     element = {<Home />} />
+        <Route path = "/Home" element = {<Home />} />
         <Route path = "/Test" element = {<Test />} />
-
 
         {/*
         <Route path="/" element={< />}/>
