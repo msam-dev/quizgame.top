@@ -17,7 +17,8 @@ public class Program
             options.AddPolicy(name: "policy1",
                 policy =>
                 {
-                    policy.WithOrigins(origins) // specifies which URL's are allowed to call endpoints that use this policy 
+                    // WithOrigins() specifies which URL's are allowed to call endpoints that use this policy 
+                    policy.WithOrigins(origins)
                     .AllowAnyHeader()
                     .AllowAnyMethod();
                 });

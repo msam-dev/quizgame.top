@@ -3,30 +3,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace quizgame.top.API.Controllers;
 
+/// <summary>
+/// Test class used to create example endpoints that can be used as a template 
+/// </summary>
 [ApiController]
 [Route("api/test")]
-public class TestController : ControllerBase
+public class TestController(ILogger<TestController> logger) : ControllerBase
 {
-    #region constructor
-
-    private readonly ILogger<TestController> Logger;
-    private Data data;
-
-    public TestController(ILogger<TestController> logger)
-    {
-        Logger = logger;
-        data = Data.Instance;
-    }
-
-    #endregion
-
-    #region properties
     
-
-    #endregion
-
-    #region endpoints
-
+    /// <summary>
+    /// Example GET endpoint
+    /// </summary>
+    /// <returns>the current time as a JSON formatted string</returns>
     [EnableCors("policy1")]
     [HttpGet("get")]
     public string GetEndpoint()
@@ -35,28 +23,30 @@ public class TestController : ControllerBase
 
 #if DEBUG
         string caller = Request.Headers.Referer.ToString();
-        Logger.Log(LogLevel.Information, $"endpoint api/test/get was called from {caller} and returned: {message}"); 
+        logger.Log(LogLevel.Information, $"endpoint api/test/get was called from {caller} and returned: {message}"); 
 #endif
         
         return message;
     }
 
+    /// <summary>
+    /// Example POST endpoint
+    /// </summary>
+    /// <returns>the current counter value after being incremented by the passed amount</returns>
     [EnableCors("policy1")]
     [HttpGet("post/{id}")]
     public string PostEndpoint(int id)
     {
+        Data data = Data.Instance;
 
         data.Count += id;
         string message = $$""" { "message" : "Counter = {{data.Count}}" } """;
 
 #if DEBUG
         string caller = Request.Headers.Referer.ToString();
-        Logger.Log(LogLevel.Information, $"endpoint api/test/post/{id} was called from {caller} and returned: {message}");
+        logger.Log(LogLevel.Information, $"endpoint api/test/post/{id} was called from {caller} and returned: {message}");
 #endif
 
         return message;
     }
-
-    #endregion
-
 }
