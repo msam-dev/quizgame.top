@@ -4,7 +4,8 @@ const Home = () => {
   return (
     <>
       <div className="welcome-card">
-        Hello : )
+        Hello : ) <br/>
+        <a href='/test'>Test</a>
       </div>
     </> 
   );
