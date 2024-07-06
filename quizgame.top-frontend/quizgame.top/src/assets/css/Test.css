@@ -1,16 +1,67 @@
-#root {
+.test-page-outer-container {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   min-height: 100vh;
-}
-
-.test-card {
-  align-self: center;
-  text-align: center;
   width: 100%;
 }
 
+.test-page-inner-container {
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.test-card {
+  display: flex;
+  margin: 5px;
+  padding: 10px;
+} 
+
 .test-button { 
-  align-self: center;
-  text-align: center;
-  width: fit-content;
+  padding: 8px;
+  margin: 5px;
+}
+
+.test-button:hover{ 
+  cursor: pointer;
+}
+
+.test-api-response{
+  width: 260px;
+  height: 20px;
+  padding: 5px;  
+}
+
+.test-api-response-title{
+  height: 25px;
+  padding: 5px;  
+  font-weight: 600
+}
+
+.test-api-response-container{
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.test-api-input-container{
+  display: flex;
+  align-items: center;  
+  padding-right: 10px;
+}
+
+.test-text-box{
+  width: 40px;
+  height: 29px;
+  margin: 1px;
+  padding-right: 10px;
+}
+
+.test-page-title{
+  font-size: 20px;
 }
