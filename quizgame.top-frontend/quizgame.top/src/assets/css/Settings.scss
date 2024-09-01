@@ -1,12 +1,11 @@
 @import "index.scss";
 
-.home-container{
+.settings-container{
   display: flex;
-  height: 100vh;
-  width: 100%;
+  min-height: 100vh;
 }
 
-.home-welcome-card{
+.welcome-card{
   align-self: center;
   text-align: center;
   width: 100%;

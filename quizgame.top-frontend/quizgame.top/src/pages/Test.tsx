@@ -6,12 +6,11 @@ import '../assets/css/Test.scss';
  */
 const Test = () => {
   
-  const url: string = 'https://localhost:7025';
-  //const url: string = 'https://api.quizgame.top';
+  //const url: string = 'https://localhost:7025';
+  const url: string = 'https://api.quizgame.top';
 
   const getEndpoint: string = url+'/api/test/get/';
   const postEndpoint: string = url+'/api/test/post/';
-  //const asyncPostEndpoint: string = url+'/api/test/asyncPost/';
 
   const [apiGetResponse, setGetResponse] = useState([]);
   const [apiPostResponse, setPostResponse] = useState([]);
@@ -42,7 +41,7 @@ const Test = () => {
   };
 
   return (
-    <div className='test-page-outer-container'>
+    <div className='test-page-container'>
       <div className='test-page-title'>
         Example of connecting to API endpoints 
       </div>

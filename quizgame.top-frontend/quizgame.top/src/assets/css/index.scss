@@ -1,10 +1,20 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --bg-color: grey;
+  --txt-color-1: white;
+  --txt-color-2: yellow;
+  --border-color: red;
+  --highlight-1: green;
+  --highlight-2: blue;
+  --box-color: rgb(167, 118, 167);
   
-  color-scheme: light dark;
-  background-color: #242424;
+  background-color: var(--bg-color);
+  color: var(--txt-color-1);
 
-  /* TODO: Review the options below */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  margin: 0;
+
+  /* TODO: Review the options below */  
+  //color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,9 +25,3 @@ body{
   margin: 0;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-}
