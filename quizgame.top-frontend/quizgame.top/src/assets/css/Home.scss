@@ -2,11 +2,14 @@
 
 .home-container{
   display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100%;
 }
 
 .home-welcome-card{
+  display: flex;
+  flex-direction: column;
   align-self: center;
   text-align: center;
   width: 100%;

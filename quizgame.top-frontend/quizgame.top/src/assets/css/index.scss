@@ -1,5 +1,6 @@
 :root {
-  --bg-color: grey;
+  --bg-color-1: grey;
+  --bg-color-2: #555555;
   --txt-color-1: white;
   --txt-color-2: yellow;
   --border-color: red;
@@ -7,7 +8,7 @@
   --highlight-2: blue;
   --box-color: rgb(167, 118, 167);
   
-  background-color: var(--bg-color);
+  background-color: var(--bg-color-1);
   color: var(--txt-color-1);
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -15,7 +16,7 @@
 
   /* TODO: Review the options below */  
   //color-scheme: light dark;
-  font-synthesis: none;
+  //font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; 

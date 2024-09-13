@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../assets/css/Test.scss';
+import NavBar from '../assets/components/NavBar';
 
 /**
  * A proof of concept to be used as a template for connecting to API endpoints
@@ -42,6 +43,7 @@ const Test = () => {
 
   return (
     <div className='test-page-container'>
+      <NavBar/>
       <div className='test-page-title'>
         Example of connecting to API endpoints 
       </div>
