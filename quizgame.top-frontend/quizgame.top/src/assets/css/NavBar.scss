@@ -7,18 +7,29 @@
 .navbar-content{
   display: flex;
   justify-content: space-between;
-  padding-top:10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 45px;
+  height: 48px;
   background-color: var(--bg-color-1);  
+  box-shadow: 0 0 30px 0 var(--shadow);
 }
 
-.navbar-link{
-  color: var(--txt-color-2);
-  text-decoration: none;
+.navbar-logo-container{
+  
 }
 
 .navbar-logo{
+  padding-left: 20px;
+  padding-top: 4px;
   height: 40px;
+}
+
+.navbar-settings-container{
+  display: flex;
+}
+
+.navbar-settings{
+  color: var(--txt-color-2);
+  text-decoration: none;
+  padding-top: 12px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
