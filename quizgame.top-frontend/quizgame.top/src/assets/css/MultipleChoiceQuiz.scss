@@ -23,22 +23,29 @@
 }
 
 .multiple-choice-button{
+  color: var(--txt-color-2);
+  font-size: 30px;
+  
   min-height: 80px;
   height: 50vw;
   max-height: 120px;
 
   width:300px;
   max-width: 400px;
+
   border-radius: 5px;
   outline: 1px solid;
   margin: 5px;
+
+  
   display: flex;
-  justify-content:center;
-  color: var(--txt-color-2);
-  font-size: 30px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .multiple-choice-button:hover{
   outline-width: 5px;
+  cursor: pointer;
 }
 
 .multiple-choice-button:nth-child(1){
