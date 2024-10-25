@@ -7,19 +7,32 @@
 .navbar-content{
   display: flex;
   justify-content: space-between;
-  height: 48px;
   background-color: var(--bg-color-1);  
   box-shadow: 0 0 30px 0 var(--shadow);
+  max-height: 48px;
+}
+
+@media screen and (max-width: 500px){
+  .navbar-content{
+    min-height: 35px;
+    height: 10vw;
+  }
 }
 
 .navbar-logo-container{
-  
+  padding-left: 2px;
+  max-width: 220px;
+  width: 40vw;
+  min-width: 140px;
+  display: flex;
+  justify-content: end;
 }
 
 .navbar-logo{
-  padding-left: 20px;
   padding-top: 4px;
-  height: 40px;
+  max-height: 40px;
+  height: 8vw;
+  min-height: 28px;
 }
 
 .navbar-settings-container{

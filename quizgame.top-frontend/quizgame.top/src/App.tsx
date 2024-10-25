@@ -11,8 +11,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path='/' element={<Layout/>}>
-          <Route path = '/'                   element = {<Home />} />
-          <Route path = '/Home'               element = {<Home />} />
+          <Route index                        element = {<Home />} />
           <Route path = '/Test'               element = {<Test />} />
           <Route path = '/Settings'           element = {<Settings />} />
           <Route path = '/world-flag-quiz-mc' element = {<MultipleChoiceQuiz />} />

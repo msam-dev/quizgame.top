@@ -1,7 +1,8 @@
 @import "index.scss";
 
-.home-container{
+.multiple-choice-container{
   display: flex;
+  align-items: center;
   flex-direction: column;
   width: 100%;
 }
@@ -9,8 +10,53 @@
 .home-welcome-card{
   display: flex;
   flex-direction: column;
-  text-align: center;
   color: var(--txt-color-2);
   width: 100%;
-  padding-top: 10%;
+  padding-top: 10vh;
+}
+
+.multiple-choice-answer-container{
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 100%;
+  max-width: 800px;
+}
+
+.multiple-choice-button{
+  min-height: 80px;
+  height: 50vw;
+  max-height: 120px;
+
+  width:300px;
+  max-width: 400px;
+  border-radius: 5px;
+  outline: 1px solid;
+  margin: 5px;
+  display: flex;
+  justify-content:center;
+  color: var(--txt-color-2);
+  font-size: 30px;
+}
+.multiple-choice-button:hover{
+  outline-width: 5px;
+}
+
+.multiple-choice-button:nth-child(1){
+  outline-color: var(--highlight-1);
+  background-color: var(--highlight-1-light);
+}
+
+.multiple-choice-button:nth-child(2){
+  outline-color: var(--highlight-3);
+  background-color: var(--highlight-3-light);
+}
+
+.multiple-choice-button:nth-child(3){
+  outline-color: var(--highlight-2);
+  background-color: var(--highlight-2-light);
+}
+
+.multiple-choice-button:nth-child(4){
+  outline-color: var(--highlight-4);
+  background-color: var(--highlight-4-light);
 }
