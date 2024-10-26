@@ -18,25 +18,19 @@
 .multiple-choice-answer-container{
   display: grid;
   grid-template-columns: auto auto;
-  width: 100%;
-  max-width: 800px;
+  width: clamp(fit-content, 800px);
 }
 
 .multiple-choice-button{
   color: var(--txt-color-2);
-  font-size: 30px;
-  
-  min-height: 80px;
-  height: 50vw;
-  max-height: 120px;
+  font-size: min(4.5vw, 25px);
 
-  width:300px;
-  max-width: 400px;
+  height: clamp(80px, 30vw, 120px);
+  width: clamp(140px, 45vw, 300px);
+  margin: 5px;
 
   border-radius: 5px;
   outline: 1px solid;
-  margin: 5px;
-
   
   display: flex;
   align-items: center;
