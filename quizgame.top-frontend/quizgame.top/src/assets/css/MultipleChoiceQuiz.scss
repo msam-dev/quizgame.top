@@ -1,33 +1,65 @@
 @import "index.scss";
 
-.multiple-choice-container{
+.multiple-choice-outer-container{
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
 }
 
-.home-welcome-card{
-  display: flex;
-  flex-direction: column;
+.multiple-choice-title{
   color: var(--txt-color-2);
+  text-align: center;
+  font-size: min(4.5vw, 25px);
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.multiple-choice-question{
+  color: var(--txt-color-2);
+}
+
+.multiple-choice-image-outer-container{
+  border: 1px solid green;
+  height: clamp(193px, 62.5vw, 350px);
   width: 100%;
-  padding-top: 10vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.multiple-choice-image-inner-container{
+  border: 1px solid red;
+  height: clamp(193px, 62.5vw, 350px);
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.multiple-choice-flag-image{
+  height: 100%;
+  width: 100%;
+  object-fit: scale-down;
+}
+
+.multiple-choice-inner-container{
+  width: clamp(290px, 94vw, 620px);
+  border: 1px solid black;
 }
 
 .multiple-choice-answer-container{
   display: grid;
   grid-template-columns: auto auto;
-  width: clamp(fit-content, 800px);
 }
 
 .multiple-choice-button{
   color: var(--txt-color-2);
-  font-size: min(4.5vw, 25px);
+  font-size: min(3vh, 25px);
 
-  height: clamp(80px, 30vw, 120px);
+  height: clamp(80px, 15vh, 120px);
   width: clamp(140px, 45vw, 300px);
-  margin: 5px;
+  margin: clamp(0px, 1vw, 5px);
 
   border-radius: 5px;
   outline: 1px solid;
