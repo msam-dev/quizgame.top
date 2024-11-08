@@ -4,9 +4,19 @@ const MultipleChoiceQuiz = () => {
   return (
     <div className='multiple-choice-outer-container'>
       <div className='multiple-choice-inner-container'>
-        <div className='multiple-choice-title'>
-          Multiple Choice Quiz: World Flags
+        <div className='multiple-choice-header'>
+          <div className='multiple-choice-exit-container'>
+            X Exit
+          </div>
+          <div className='multiple-choice-title'>
+            World Flags Quiz
+          </div>
+          <div className='multiple-choice-score-container'>
+            Score <br/>
+            1000/1000
+          </div>
         </div>
+        
         <div className='multiple-choice-image-outer-container'>
           <div className='multiple-choice-image-inner-container'>
             <img src='https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg' className='multiple-choice-flag-image'/>
@@ -31,6 +41,10 @@ const MultipleChoiceQuiz = () => {
           <div className='multiple-choice-button'>
             China
           </div> 
+        </div>
+
+        <div className='multiple-choice-next-button'>
+          Next Question
         </div>
       </div>
     </div> 
