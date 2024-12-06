@@ -19,11 +19,13 @@
 
 .multiple-choice-exit-container, .multiple-choice-score-container{
   width: min(29vw, 190px);
-  //background-color: bisque;
+  text-decoration: none;
+  color: var(--txt-color-2);
+
 }
 
 .multiple-choice-score-container{
-  
+  text-align: end;
 }
 
 .multiple-choice-title{
