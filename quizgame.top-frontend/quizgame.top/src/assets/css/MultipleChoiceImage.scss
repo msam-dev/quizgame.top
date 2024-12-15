@@ -112,6 +112,18 @@
   outline-width: 5px;
 }
 
+.multiple-choice-button.false{
+
+  outline: 1px solid var(--highlight-2);
+  background-color: var(--highlight-2-light);
+}
+
+.multiple-choice-button.true{
+
+  outline: 1px solid var(--highlight-2);
+  background-color: var(--highlight-2-light);
+}
+
 // .multiple-choice-button:nth-child(1){
 //   outline-color: var(--highlight-1);
 //   background-color: var(--highlight-1-light);
