@@ -8,12 +8,17 @@ const MultipleChoiceQuiz = () => {
   useEffect(() => { newQuestion() }, []);
 
   const [country1, setCountry1] = useState<string>("");
-  const [country2, setCountry2] = useState<string>("");
+  const [country2, setCountry2] = useState<string>(""); 
   const [country3, setCountry3] = useState<string>("");
   const [country4, setCountry4] = useState<string>("");
+  const [class1,   setClass1]   = useState<string>("");
+  const [class2,   setClass2]   = useState<string>(""); 
+  const [class3,   setClass3]   = useState<string>("");
+  const [class4,   setClass4]   = useState<string>("");
   const [flagImg,  setFlagImg ] = useState<string>("");
   const [answer,   setAnswer  ] = useState<string>("");
 
+ 
   // 
   const newQuestion = () => {
 
@@ -28,25 +33,60 @@ const MultipleChoiceQuiz = () => {
     setCountry2(countries[arr[1]].name);
     setCountry3(countries[arr[2]].name);
     setCountry4(countries[arr[3]].name);
+    setClass1('default');
+    setClass2('default');
+    setClass3('default');
+    setClass4('default');
 
     const index: number = Math.floor(Math.random() * 4);
     setAnswer(countries[arr[index]].name);
     setFlagImg(countries[arr[index]].image_url);
   };
 
-  const submit = (guess: string, correct: string, id: string) =>{
+  const submit = (guess: string) =>{
+    setClass1('default');
+    setClass2('default');
+    setClass3('default');
+    setClass4('default');
+
+    let index: number = 0;
     
-    console.log("guess:"+guess+" answer:"+correct+" correct?"+(guess == correct));
+    const correct: boolean = guess == answer;
+
+    switch(guess)
+    {
+      case country1:
+        setClass1(correct ? 'correct' : 'incorrect');
+        index = 1;
+        break;
+      case country2:
+        setClass2(correct ? 'correct' : 'incorrect');
+        index = 2;
+        break;
+      case country3:
+        setClass3(correct ? 'correct' : 'incorrect');
+        index = 3;
+        break;
+      case country4:
+        setClass4(correct ? 'correct' : 'incorrect');
+        index = 4;
+        break;     
+    }
+    
+    console.log("1:  guess:"+guess+" answer:"+answer+" correct?"+(guess == answer));
   }
 
   return (
     <>
       <MultipleChoiceImage 
-        answer  ={answer}
-        answer1 ={country1} 
-        answer2 ={country2}
-        answer3 ={country3}
-        answer4 ={country4}
+        option1 ={country1} 
+        option2 ={country2}
+        option3 ={country3}
+        option4 ={country4}
+        class1  ={class1} 
+        class2  ={class2}
+        class3  ={class3}
+        class4  ={class4}
         imageUrl={flagImg}
         next    ={newQuestion}
         submit  ={submit}

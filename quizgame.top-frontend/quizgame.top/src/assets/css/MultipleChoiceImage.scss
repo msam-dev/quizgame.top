@@ -92,8 +92,8 @@
   font-size: min(3vh, 25px);
   overflow: hidden;
 
-  outline: 1px solid var(--highlight-2);
-  background-color: var(--highlight-2-light);
+  // outline: 1px solid var(--highlight-2);
+  // background-color: var(--highlight-2-light);
 
   height: clamp(80px, 15vh, 120px);
   width: clamp(140px, 45vw, 300px);
@@ -108,21 +108,25 @@
   text-align: center;
 }
 
+.multiple-choice-button.default{
+  outline: 1px solid var(--highlight-2);
+  background-color: var(--highlight-2-light);
+}
+
+.multiple-choice-button.correct{
+  outline: 5px solid var(--highlight-1);
+  background-color: var(--highlight-1-light);
+}
+
+.multiple-choice-button.incorrect{
+  outline: 5px solid var(--highlight-5);
+  background-color: var(--highlight-5-light);
+}
+
 .multiple-choice-button:hover{
   outline-width: 5px;
 }
 
-.multiple-choice-button.false{
-
-  outline: 1px solid var(--highlight-2);
-  background-color: var(--highlight-2-light);
-}
-
-.multiple-choice-button.true{
-
-  outline: 1px solid var(--highlight-2);
-  background-color: var(--highlight-2-light);
-}
 
 // .multiple-choice-button:nth-child(1){
 //   outline-color: var(--highlight-1);

@@ -1,17 +1,20 @@
 import '../css/MultipleChoiceImage.scss';
 
 interface MultipleChoiceImageProps {
-  answer:  string;
-  answer1: string;
-  answer2: string;
-  answer3: string;
-  answer4: string;
+  option1:  string;
+  option2:  string;
+  option3:  string;
+  option4:  string;
+  class1:   string;
+  class2:   string;
+  class3:   string;
+  class4:   string;
   imageUrl: string;
   next: () => void; 
-  submit: (index: string, answer: string) => void;
+  submit: (index: string) => void;
 }
 
-const MultipleChoiceImage = ({ answer, answer1, answer2, answer3, answer4, imageUrl, next, submit }: MultipleChoiceImageProps) => {
+const MultipleChoiceImage = ({ option1, option2, option3, option4, class1, class2, class3, class4, imageUrl, next, submit }: MultipleChoiceImageProps) => {
   return (
     <div className='multiple-choice-outer-container'>
       <div className='multiple-choice-inner-container'>  
@@ -21,17 +24,17 @@ const MultipleChoiceImage = ({ answer, answer1, answer2, answer3, answer4, image
           </div>
         </div>
         <div className='multiple-choice-answer-container'>
-          <div className='multiple-choice-button' onClick={() => submit(answer1, answer)}>
-            {answer1}
+          <div className={`multiple-choice-button ${class1}`} onClick={() => submit(option1)}>
+            {option1}
           </div> 
-          <div className='multiple-choice-button' onClick={() => submit(answer2, answer)}>
-            {answer2}
+          <div className={`multiple-choice-button ${class2}`} onClick={() => submit(option2)}>
+            {option2}
           </div> 
-          <div className='multiple-choice-button' onClick={() => submit(answer3, answer)}>
-            {answer3}
+          <div className={`multiple-choice-button ${class3}`} onClick={() => submit(option3)}>
+            {option3}
           </div> 
-          <div className='multiple-choice-button' onClick={() => submit(answer4, answer)}>
-            {answer4}
+          <div className={`multiple-choice-button ${class4}`} onClick={() => submit(option4)}>
+            {option4}
           </div> 
         </div>
         <div className='multiple-choice-next-button' onClick={next}>
