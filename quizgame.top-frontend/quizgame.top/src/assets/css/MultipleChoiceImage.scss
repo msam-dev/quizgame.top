@@ -39,7 +39,7 @@
 }
 
 .multiple-choice-image-outer-container{
-  border: 1px solid green;
+  //border: 1px solid green;
   height: clamp(193px, 62.5vw, 350px);
   width: 100%;
 
@@ -49,7 +49,7 @@
 }
 
 .multiple-choice-image-inner-container{
-  border: 1px solid red;
+  //border: 1px solid red;
   height: clamp(193px, 62.5vw, 350px);
   width: 80%;
   display: flex;
@@ -64,10 +64,10 @@
 
 .multiple-choice-inner-container{
   width: clamp(290px, 94vw, 620px);
-  border: 1px solid black;
+  //border: 1px solid black;
 }
 
-.multiple-choice-next-button{
+.multiple-choice-next-button.show{
   cursor: pointer;
   color: var(--txt-color-2);
   background-color: var(--highlight-4-light);
@@ -77,6 +77,9 @@
   padding: 5px 7px 5px 7px;
   margin: 5px;
   border-radius: 5px;
+}
+.multiple-choice-next-button.hide{
+  display: none;
 }
 .multiple-choice-next-button:hover{
   outline-width: 4px;
@@ -89,13 +92,13 @@
 
 .multiple-choice-button{
   color: var(--txt-color-2);
-  font-size: min(3vh, 25px);
+  font-size: min(3vh, 30px);
   overflow: hidden;
 
   // outline: 1px solid var(--highlight-2);
   // background-color: var(--highlight-2-light);
 
-  height: clamp(80px, 15vh, 120px);
+  height: clamp(80px, 13vh, 120px);
   width: clamp(140px, 45vw, 300px);
   margin: clamp(0px, 1vw, 5px);
 

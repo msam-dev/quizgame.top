@@ -8,7 +8,7 @@ function Layout() {
   return (
     <>
       <Navbar />
-      <Outlet /> {/* This will render the content of the current route */}
+      <Outlet /> 
     </>
   );
 }

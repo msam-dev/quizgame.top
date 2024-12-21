@@ -1,20 +1,21 @@
 import '../css/MultipleChoiceImage.scss';
 
 interface MultipleChoiceImageProps {
-  option1:  string;
-  option2:  string;
-  option3:  string;
-  option4:  string;
-  class1:   string;
-  class2:   string;
-  class3:   string;
-  class4:   string;
-  imageUrl: string;
-  next: () => void; 
-  submit: (index: string) => void;
+  option1:   string; 
+  option2:   string;
+  option3:   string;
+  option4:   string;
+  class1:    string;
+  class2:    string;
+  class3:    string;
+  class4:    string;
+  nextClass: string
+  imageUrl:  string;
+  next:      () => void; 
+  submit:    (guess: string) => void;
 }
 
-const MultipleChoiceImage = ({ option1, option2, option3, option4, class1, class2, class3, class4, imageUrl, next, submit }: MultipleChoiceImageProps) => {
+const MultipleChoiceImage = ({ option1, option2, option3, option4, class1, class2, class3, class4, nextClass, imageUrl, next, submit }: MultipleChoiceImageProps) => {
   return (
     <div className='multiple-choice-outer-container'>
       <div className='multiple-choice-inner-container'>  
@@ -37,7 +38,7 @@ const MultipleChoiceImage = ({ option1, option2, option3, option4, class1, class
             {option4}
           </div> 
         </div>
-        <div className='multiple-choice-next-button' onClick={next}>
+        <div className={`multiple-choice-next-button ${nextClass}`} onClick={next}>
           Next Question
         </div>
       </div>
@@ -46,4 +47,3 @@ const MultipleChoiceImage = ({ option1, option2, option3, option4, class1, class
 }
 
 export default MultipleChoiceImage;
-
