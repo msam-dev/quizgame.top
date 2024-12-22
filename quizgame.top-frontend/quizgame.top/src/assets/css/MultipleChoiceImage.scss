@@ -1,7 +1,5 @@
 @import 'index.scss';
 
-@import "index.scss";
-
 .multiple-choice-outer-container{
   display: flex;
   align-items: center;
@@ -39,7 +37,7 @@
 }
 
 .multiple-choice-image-outer-container{
-  //border: 1px solid green;
+  border: 1px solid green;
   height: clamp(193px, 62.5vw, 350px);
   width: 100%;
 
@@ -48,23 +46,53 @@
   align-items: center;
 }
 
+
+
+
+
+
 .multiple-choice-image-inner-container{
-  //border: 1px solid red;
-  height: clamp(193px, 62.5vw, 350px);
-  width: 80%;
-  display: flex;
-  justify-content: center;
+  outline: 1px solid black;
+  // height: clamp(193px, 62.5vw, 350px);
+  //width: 80%;
+
+  container-type: normal;   
 }
 
+
 .multiple-choice-flag-image{
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
+  box-shadow: 0 0 8px 5px var(--shadow);
+    
+  aspect-ratio: auto; /* use natural aspect ratio */
+  border: 5px solid red;
+
+  height: 100%;
+  width:auto;
+} 
+
+@container (aspect-ratio > 1) {
+  .multiple-choice-flag-image {
+    border: 5px solid blue;
+  }
 }
+
+
+
+
+
+
+
 
 .multiple-choice-inner-container{
   width: clamp(290px, 94vw, 620px);
-  //border: 1px solid black;
+
+  // border: 1px solid black;
+}
+
+.multiple-choice-next-button-container{
+  background-color: grey;
+  display: flex;
+  justify-content: end;
 }
 
 .multiple-choice-next-button.show{
