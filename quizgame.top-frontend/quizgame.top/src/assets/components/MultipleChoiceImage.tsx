@@ -9,16 +9,14 @@ interface MultipleChoiceImageProps {
   class2:    string;
   class3:    string;
   class4:    string;
-  nextClass: string
   imageUrl:  string;
-  next:      () => void; 
   submit:    (guess: string) => void;
 }
 
-const MultipleChoiceImage = ({ option1, option2, option3, option4, class1, class2, class3, class4, nextClass, imageUrl, next, submit }: MultipleChoiceImageProps) => {
+const MultipleChoiceImage = ({ option1, option2, option3, option4, class1, class2, class3, class4, imageUrl, submit }: MultipleChoiceImageProps) => {
   return (
-    <div className='multiple-choice-outer-container'>
-      <div className='multiple-choice-inner-container'>  
+    <>
+      <div className='multiple-choice-container'>  
         <div className='multiple-choice-image-outer-container'>
           <div className='multiple-choice-image-inner-container'>
             <img src={imageUrl} className='multiple-choice-flag-image'/>
@@ -38,13 +36,8 @@ const MultipleChoiceImage = ({ option1, option2, option3, option4, class1, class
             {option4}
           </div> 
         </div>
-        <div className='multiple-choice-next-button-container'>
-          <div className={`multiple-choice-next-button ${nextClass}`} onClick={next}>
-            Next Question
-          </div>
-        </div>
       </div>
-    </div> 
+    </> 
   );
 }
 

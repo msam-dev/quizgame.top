@@ -1,3 +1,4 @@
+import '../assets/css/FlagQuiz.scss';
 import countries from '../assets/data/Countries.json';
 import MultipleChoiceImage from '../assets/components/MultipleChoiceImage';
 import { useEffect, useState } from 'react';
@@ -6,17 +7,19 @@ const MultipleChoiceQuiz = () => {
 
   useEffect(() => { newQuestion() }, []);
 
-  const [country1, setCountry1]   = useState<string>("");
-  const [country2, setCountry2]   = useState<string>(""); 
-  const [country3, setCountry3]   = useState<string>("");
-  const [country4, setCountry4]   = useState<string>("");
-  const [class1,   setClass1]     = useState<string>("");
-  const [class2,   setClass2]     = useState<string>(""); 
-  const [class3,   setClass3]     = useState<string>("");
-  const [class4,   setClass4]     = useState<string>("");
-  const [flagImg,  setFlagImg ]   = useState<string>("");
-  const [answer,   setAnswer  ]   = useState<string>("");
-  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [score,    setScore]              = useState<number>(0);
+  const [questionCount, setQuestionCount] = useState<number>(0);
+  const [country1, setCountry1]           = useState<string>("");
+  const [country2, setCountry2]           = useState<string>(""); 
+  const [country3, setCountry3]           = useState<string>("");
+  const [country4, setCountry4]           = useState<string>("");
+  const [class1,   setClass1]             = useState<string>("");
+  const [class2,   setClass2]             = useState<string>(""); 
+  const [class3,   setClass3]             = useState<string>("");
+  const [class4,   setClass4]             = useState<string>("");
+  const [flagImg,  setFlagImg ]           = useState<string>("");
+  const [answer,   setAnswer  ]           = useState<string>("");
+  const [submitted, setSubmitted]         = useState<boolean>(false);
   const [nextQuestionClass, setNextClass] = useState<string>("hide");
 
   /**
@@ -44,18 +47,16 @@ const MultipleChoiceQuiz = () => {
     const index: number = Math.floor(Math.random() * 4);
     setAnswer(countries[arr[index]].name);
     setFlagImg(countries[arr[index]].image_url);
-  
+
+    setQuestionCount(questionCount+1);
     setSubmitted(false);
     setNextClass('hide');
-    console.log('newQuestion');
   };
 
   /**
    * Handles the logic when a user submits a guess
    */ 
   const submit = (guess: string) => {
-    console.log('submit');
-
     if(submitted) return;
 
     switch(answer) {
@@ -90,12 +91,25 @@ const MultipleChoiceQuiz = () => {
       }
     }
 
+    if(guess == answer) setScore(score+1);
+
     setNextClass('show');
     setSubmitted(true);
   }
 
   return (
-    <>
+    <div className='flag-quiz-outer-container'>
+      <div className='flag-quiz-header'>
+        <div className='flag-quiz-exit-container'>
+          <a className='flag-quiz-exit' href='/'>Exit Quiz </a>
+        </div>
+        <div className='flag-quiz-title'>
+          Endless Flag Quiz (World)
+        </div>
+        <div className='flag-quiz-score-container'>
+          Score: {score}/{questionCount} 
+        </div>
+      </div>
       <MultipleChoiceImage 
         option1   = {country1} 
         option2   = {country2}
@@ -105,12 +119,15 @@ const MultipleChoiceQuiz = () => {
         class2    = {class2}
         class3    = {class3}
         class4    = {class4}
-        nextClass = {nextQuestionClass}
         imageUrl  = {flagImg}
-        next      = {newQuestion}
         submit    = {submit}
       />
-    </>
+      <div className='flag-quiz-next-button-container'>
+        <div className={`flag-quiz-next-button ${nextQuestionClass}`} onClick={newQuestion}>
+          Next Question
+        </div>
+      </div>
+    </div>
   );
 }
 

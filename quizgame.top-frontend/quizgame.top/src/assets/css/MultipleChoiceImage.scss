@@ -1,43 +1,10 @@
 @import 'index.scss';
 
-.multiple-choice-outer-container{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-}
-
-.multiple-choice-header{
-  display: flex;
-  justify-content: space-between;
-  color: var(--txt-color-2);
-  font-size: min(3.8vw, 25px);
-
-  padding-top: 10px;
-  padding-bottom: 5px;
-}
-
-.multiple-choice-exit-container, .multiple-choice-score-container{
-  width: min(29vw, 190px);
-  text-decoration: none;
-  color: var(--txt-color-2);
-
-}
-
-.multiple-choice-score-container{
-  text-align: end;
-}
-
-.multiple-choice-title{
-  width: fit-content;
-}
-
-.multiple-choice-question{
-  color: var(--txt-color-2);
+.multiple-choice-container{
+  width: clamp(290px, 94vw, 620px);
 }
 
 .multiple-choice-image-outer-container{
-  border: 1px solid green;
   height: clamp(193px, 62.5vw, 250px);
   width: 100%;
 
@@ -47,8 +14,6 @@
 }
 
 .multiple-choice-image-inner-container{
-  //outline: 1px solid black;
-  //height: clamp(193px, 62.5vw, 350px);
   height: clamp(193px, 62.5vw, 350px);
 
   display: flex;
@@ -57,39 +22,12 @@
 }
 
 .multiple-choice-flag-image{ 
-  // Careful messing with this class, it has caused much grief in the past
-  box-shadow: 0 0 8px 5px var(--shadow);
+  // Careful messing with this class, it has caused grief in the past
   height: 60%;
   width:auto;
+
+  box-shadow: 0 0 8px 5px var(--shadow);
 } 
-
-.multiple-choice-inner-container{
-  width: clamp(290px, 94vw, 620px);
-  // border: 1px solid black;
-}
-
-.multiple-choice-next-button-container{
-  display: flex;
-  justify-content: end;
-}
-
-.multiple-choice-next-button.show{
-  cursor: pointer;
-  color: var(--txt-color-2);
-  background-color: var(--highlight-4-light);
-  outline: 1px solid var(--highlight-4);
-  
-  width: fit-content;
-  padding: 5px 7px 5px 7px;
-  margin: 5px;
-  border-radius: 5px;
-}
-.multiple-choice-next-button.hide{
-  display: none;
-}
-.multiple-choice-next-button:hover{
-  outline-width: 4px;
-}
 
 .multiple-choice-answer-container{
   display: grid;
@@ -97,59 +35,33 @@
 }
 
 .multiple-choice-button{
-  color: var(--txt-color-2);
-  font-size: min(3vh, 30px);
-  overflow: hidden;
-
-  // outline: 1px solid var(--highlight-2);
-  // background-color: var(--highlight-2-light);
-
-  height: clamp(80px, 13vh, 120px);
+  height: clamp(40px, 13vh, 120px);
   width: clamp(140px, 45vw, 300px);
   margin: clamp(0px, 1vw, 5px);
-
-  cursor: pointer;
+  
+  font-size: min(3vh, 30px);  
   border-radius: 5px;
+  overflow: hidden;
+  color: var(--txt-color-2);
+  cursor: pointer;
   
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
 }
-
 .multiple-choice-button.default{
   outline: 1px solid var(--highlight-2);
   background-color: var(--highlight-2-light);
 }
-
 .multiple-choice-button.correct{
   outline: 5px solid var(--highlight-1);
   background-color: var(--highlight-1-light);
 }
-
 .multiple-choice-button.incorrect{
   outline: 5px solid var(--highlight-5);
   background-color: var(--highlight-5-light);
 }
-
 .multiple-choice-button:hover{
   outline-width: 5px;
 }
-
-
-// .multiple-choice-button:nth-child(1){
-//   outline-color: var(--highlight-1);
-//   background-color: var(--highlight-1-light);
-// }
-// .multiple-choice-button:nth-child(2){
-//   outline-color: var(--highlight-3);
-//   background-color: var(--highlight-3-light);
-// }
-// .multiple-choice-button:nth-child(3){
-//   outline-color: var(--highlight-2);
-//   background-color: var(--highlight-2-light);
-// }
-// .multiple-choice-button:nth-child(4){
-//   outline-color: var(--highlight-4);
-//   background-color: var(--highlight-4-light);
-// }
