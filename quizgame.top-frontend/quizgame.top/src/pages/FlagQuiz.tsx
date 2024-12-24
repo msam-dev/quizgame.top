@@ -41,18 +41,10 @@ const MultipleChoiceQuiz = () => {
     setClass3('default');
     setClass4('default');
 
-    // let i: number = 0;
-    // countries.forEach(element => {
-    //   console.log(i++ + ": "+ element.name);
-    // });
-
     const index: number = Math.floor(Math.random() * 4);
     setAnswer(countries[arr[index]].name);
     setFlagImg(countries[arr[index]].image_url);
-    if(index == 2) setFlagImg(countries[179].image_url);
-    if(index == 3) setFlagImg(countries[179].image_url);
-
-    
+  
     setSubmitted(false);
     setNextClass('hide');
     console.log('newQuestion');

@@ -20,7 +20,6 @@ const MultipleChoiceImage = ({ option1, option2, option3, option4, class1, class
     <div className='multiple-choice-outer-container'>
       <div className='multiple-choice-inner-container'>  
         <div className='multiple-choice-image-outer-container'>
-          
           <div className='multiple-choice-image-inner-container'>
             <img src={imageUrl} className='multiple-choice-flag-image'/>
           </div>

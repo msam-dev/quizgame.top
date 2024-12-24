@@ -38,7 +38,7 @@
 
 .multiple-choice-image-outer-container{
   border: 1px solid green;
-  height: clamp(193px, 62.5vw, 350px);
+  height: clamp(193px, 62.5vw, 250px);
   width: 100%;
 
   display: flex;
@@ -46,51 +46,29 @@
   align-items: center;
 }
 
-
-
-
-
-
 .multiple-choice-image-inner-container{
-  outline: 1px solid black;
-  // height: clamp(193px, 62.5vw, 350px);
-  //width: 80%;
+  //outline: 1px solid black;
+  //height: clamp(193px, 62.5vw, 350px);
+  height: clamp(193px, 62.5vw, 350px);
 
-  container-type: normal;   
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-.multiple-choice-flag-image{
+.multiple-choice-flag-image{ 
+  // Careful messing with this class, it has caused much grief in the past
   box-shadow: 0 0 8px 5px var(--shadow);
-    
-  aspect-ratio: auto; /* use natural aspect ratio */
-  border: 5px solid red;
-
-  height: 100%;
+  height: 60%;
   width:auto;
 } 
 
-@container (aspect-ratio > 1) {
-  .multiple-choice-flag-image {
-    border: 5px solid blue;
-  }
-}
-
-
-
-
-
-
-
-
 .multiple-choice-inner-container{
   width: clamp(290px, 94vw, 620px);
-
   // border: 1px solid black;
 }
 
 .multiple-choice-next-button-container{
-  background-color: grey;
   display: flex;
   justify-content: end;
 }
@@ -163,17 +141,14 @@
 //   outline-color: var(--highlight-1);
 //   background-color: var(--highlight-1-light);
 // }
-
 // .multiple-choice-button:nth-child(2){
 //   outline-color: var(--highlight-3);
 //   background-color: var(--highlight-3-light);
 // }
-
 // .multiple-choice-button:nth-child(3){
 //   outline-color: var(--highlight-2);
 //   background-color: var(--highlight-2-light);
 // }
-
 // .multiple-choice-button:nth-child(4){
 //   outline-color: var(--highlight-4);
 //   background-color: var(--highlight-4-light);
