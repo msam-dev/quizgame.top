@@ -5,7 +5,7 @@ const Home = () => {
     <div className='home-container'>
       <div className="home-welcome-card">
           Games:
-        <a href='/world-flag-quiz-mc'>Guess The Flag (World, Multiple Choice)</a>
+        <a href='/world-flag-quiz-mc'>Flags Of The World (Multiple Choice)</a>
     
       </div> 
     </div> 

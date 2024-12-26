@@ -25,8 +25,10 @@
   // Careful messing with this class, it has caused grief in the past
   height: 60%;
   width:auto;
-
-  box-shadow: 0 0 8px 5px var(--shadow);
+  
+  &.loaded{
+    box-shadow: 0 0 8px 5px var(--shadow);
+  }
 } 
 
 .multiple-choice-answer-container{

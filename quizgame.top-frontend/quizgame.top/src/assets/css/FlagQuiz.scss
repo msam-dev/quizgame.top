@@ -21,16 +21,15 @@
 }
 
 .flag-quiz-exit{
-
-  padding: 2px 2px 2px 0px;
-  //margin: 5px;
+  outline: 1px solid var(--highlight-3);
+  background-color: var(--highlight-3-light);
+  padding: 1px 4px 1px 3px;
   border-radius: 3px;  
   text-decoration: none;
   color: var(--txt-color-2);
 }
 .flag-quiz-exit:hover{
-  //outline: 1px solid var(--bg-color-2);
-  background-color: var(--bg-color-2-light);
+  outline-width: 2px ;
 }
 
 .flag-quiz-score-container{
@@ -59,7 +58,8 @@
   cursor: pointer;
   color: var(--txt-color-2);
   background-color: var(--highlight-4-light);
-  outline: 1px solid var(--highlight-4);
+  outline: 3px solid var(--highlight-4);
+  
   
   width: fit-content;
   padding: 5px 7px 5px 7px;
@@ -71,4 +71,6 @@
 }
 .flag-quiz-next-button:hover{
   outline-width: 4px;
+  box-shadow: 0 0 5px 1px var(--shadow);
+
 }

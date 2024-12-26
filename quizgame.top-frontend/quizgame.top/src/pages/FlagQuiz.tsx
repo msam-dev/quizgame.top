@@ -46,7 +46,7 @@ const MultipleChoiceQuiz = () => {
 
     const index: number = Math.floor(Math.random() * 4);
     setAnswer(countries[arr[index]].name);
-    setFlagImg(countries[arr[index]].image_url);
+    setFlagImg(countries[arr[index]].code);
 
     setQuestionCount(questionCount+1);
     setSubmitted(false);
@@ -104,7 +104,7 @@ const MultipleChoiceQuiz = () => {
           <a className='flag-quiz-exit' href='/'>End Quiz </a>
         </div>
         <div className='flag-quiz-title'>
-          Endless Flag Quiz (World)
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/* Endless Flag Quiz (World) */}
         </div>
         <div className='flag-quiz-score-container'>
           Score: {score}/{questionCount} 
@@ -124,7 +124,7 @@ const MultipleChoiceQuiz = () => {
       />
       <div className='flag-quiz-next-button-container'>
         <div className={`flag-quiz-next-button ${nextQuestionClass}`} onClick={newQuestion}>
-          Next Question
+          <b>Next Question</b>
         </div>
       </div>
     </div>

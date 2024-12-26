@@ -1,4 +1,6 @@
 import '../css/MultipleChoiceImage.scss';
+import { useState } from 'react';
+import  Flag from 'react-world-flags';
 
 interface MultipleChoiceImageProps {
   option1:   string; 
@@ -14,12 +16,20 @@ interface MultipleChoiceImageProps {
 }
 
 const MultipleChoiceImage = ({ option1, option2, option3, option4, class1, class2, class3, class4, imageUrl, submit }: MultipleChoiceImageProps) => {
+  
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setIsLoaded(true);
+  };
+
   return (
     <>
       <div className='multiple-choice-container'>  
         <div className='multiple-choice-image-outer-container'>
           <div className='multiple-choice-image-inner-container'>
-            <img src={imageUrl} className='multiple-choice-flag-image'/>
+            <Flag code={imageUrl} onLoad={handleImageLoad} className={`multiple-choice-flag-image ${isLoaded ? "loaded" : ""}`}/>
+            {/* <img src={`https://flagcdn.com/${imageUrl}.svg`} onLoad={handleImageLoad} className={`multiple-choice-flag-image ${isLoaded ? "loaded" : ""}`}/> */}
           </div>
         </div>
         <div className='multiple-choice-answer-container'>
