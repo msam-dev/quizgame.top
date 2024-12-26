@@ -55,13 +55,13 @@
   background-color: var(--highlight-2-light);
 }
 .multiple-choice-button.correct{
-  outline: 5px solid var(--highlight-1);
+  outline: 3px solid var(--highlight-1);
   background-color: var(--highlight-1-light);
 }
 .multiple-choice-button.incorrect{
-  outline: 5px solid var(--highlight-5);
+  outline: 3px solid var(--highlight-5);
   background-color: var(--highlight-5-light);
 }
 .multiple-choice-button:hover{
-  outline-width: 5px;
+  outline-width: 3px;
 }

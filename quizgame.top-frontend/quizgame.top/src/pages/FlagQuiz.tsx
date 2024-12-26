@@ -101,7 +101,7 @@ const MultipleChoiceQuiz = () => {
     <div className='flag-quiz-outer-container'>
       <div className='flag-quiz-header'>
         <div className='flag-quiz-exit-container'>
-          <a className='flag-quiz-exit' href='/'>Exit Quiz </a>
+          <a className='flag-quiz-exit' href='/'>End Quiz </a>
         </div>
         <div className='flag-quiz-title'>
           Endless Flag Quiz (World)

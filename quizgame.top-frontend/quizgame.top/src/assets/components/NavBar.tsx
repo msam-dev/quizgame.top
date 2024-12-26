@@ -1,11 +1,12 @@
 import '../css/Navbar.scss';
+import title from '../images/quizgame-title-LD.png';
 
 const Navbar = () => {
   return (
     <div className='navbar-container'>
       <div className="navbar-content">
         <div className='navbar-logo-container'>
-          <a href='/'><img className='navbar-logo' src='src\assets\images\quizgame-title-LD.png'/></a>
+          <a href='/'><img className='navbar-logo' src={title}/></a>
         </div>
         <div className='navbar-settings-container'>
           <a className='navbar-settings' href='/world-flag-quiz-mc'>Quiz</a>
