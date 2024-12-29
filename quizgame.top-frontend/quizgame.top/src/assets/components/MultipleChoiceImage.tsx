@@ -29,7 +29,6 @@ const MultipleChoiceImage = ({ option1, option2, option3, option4, class1, class
         <div className='multiple-choice-image-outer-container'>
           <div className='multiple-choice-image-inner-container'>
             <Flag code={imageUrl} onLoad={handleImageLoad} className={`multiple-choice-flag-image ${isLoaded ? "loaded" : ""}`}/>
-            {/* <img src={`https://flagcdn.com/${imageUrl}.svg`} onLoad={handleImageLoad} className={`multiple-choice-flag-image ${isLoaded ? "loaded" : ""}`}/> */}
           </div>
         </div>
         <div className='multiple-choice-answer-container'>
