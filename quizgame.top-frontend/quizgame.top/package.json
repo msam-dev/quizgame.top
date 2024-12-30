@@ -11,6 +11,7 @@
     "deploy": "aws s3 sync dist/ s3://quizgame.top"
   },
   "dependencies": {
+    "antd": "^5.22.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.4.0",
