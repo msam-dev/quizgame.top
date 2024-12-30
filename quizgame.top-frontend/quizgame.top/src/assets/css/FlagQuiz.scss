@@ -3,11 +3,12 @@
 .flag-quiz-header{
   display: flex;
   justify-content: space-between;
+  align-content: center;
   color: var(--txt-color-2);
   font-size: min(3.8vw, 20px);
 
-  padding-top: 10px;
-  padding-bottom: 5px;
+  padding-top: min(25px,4vh);
+  //padding-bottom: 5px;
 }
 
 
@@ -17,19 +18,25 @@
 }
 
 .flag-quiz-exit-container, .flag-quiz-score-container{
-  width: min(25vw, 190px);
+  //width: min(25vw, 190px);
+  width: min(45vw, 310px);
 }
 
 .flag-quiz-exit{
-  outline: 1px solid var(--highlight-3);
-  background-color: var(--highlight-3-light);
+  //background-color: var(--highlight-3-light);
   padding: 1px 4px 1px 3px;
-  border-radius: 3px;  
   text-decoration: none;
   color: var(--txt-color-2);
 }
-.flag-quiz-exit:hover{
-  outline-width: 2px ;
+.flag-quiz-exit-icon{
+  font-size: 27px;
+  background-color: var(--bg-color-2);
+  color: var(--txt-color-1);
+  border-radius: 3px;  
+  padding-right: 2px;
+}
+.flag-quiz-exit-icon:hover{
+  outline: 3px solid var(--bg-color-2-light);
 }
 
 .flag-quiz-score-container{
@@ -52,19 +59,19 @@
 
 .flag-quiz-next-button-container{
   display: flex;
-  justify-content: end;
 }
 .flag-quiz-next-button.show{
   cursor: pointer;
   color: var(--txt-color-2);
   background-color: var(--highlight-4-light);
   outline: 3px solid var(--highlight-4);
-  
-  
   width: fit-content;
   padding: 5px 7px 5px 7px;
   margin: 5px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
 }
 .flag-quiz-next-button.hide{
   display: none;
@@ -72,5 +79,9 @@
 .flag-quiz-next-button:hover{
   outline-width: 4px;
   box-shadow: 0 0 5px 1px var(--shadow);
+}
 
+.flag-quiz-next-arrow{
+  font-size: 18px;
+  padding-left: 5px;
 }

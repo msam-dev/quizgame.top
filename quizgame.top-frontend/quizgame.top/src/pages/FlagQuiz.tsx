@@ -2,6 +2,8 @@ import '../assets/css/FlagQuiz.scss';
 import countries from '../assets/data/Countries.json';
 import MultipleChoiceImage from '../assets/components/MultipleChoiceImage';
 import { useEffect, useState } from 'react';
+import { HiArrowRight } from "react-icons/hi";
+import { IoCaretBack } from "react-icons/io5";
 
 const MultipleChoiceQuiz = () => {
 
@@ -101,10 +103,9 @@ const MultipleChoiceQuiz = () => {
     <div className='flag-quiz-outer-container'>
       <div className='flag-quiz-header'>
         <div className='flag-quiz-exit-container'>
-          <a className='flag-quiz-exit' href='/'>End Quiz </a>
+          <b><a className='flag-quiz-exit' href='/'><IoCaretBack  className='flag-quiz-exit-icon'/> </a></b>
         </div>
         <div className='flag-quiz-title'>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/* Endless Flag Quiz (World) */}
         </div>
         <div className='flag-quiz-score-container'>
           Score: {score}/{questionCount} 
@@ -124,7 +125,8 @@ const MultipleChoiceQuiz = () => {
       />
       <div className='flag-quiz-next-button-container'>
         <div className={`flag-quiz-next-button ${nextQuestionClass}`} onClick={newQuestion}>
-          <b>Next Question</b>
+          Next Question
+          <HiArrowRight className='flag-quiz-next-arrow'/>
         </div>
       </div>
     </div>
