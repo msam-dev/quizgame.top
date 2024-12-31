@@ -138,16 +138,16 @@
 }
 
 .navbar-settings-login{
-  color: var(--txt-color-2);
-  border: 1px solid var(--bg-color-2);
+  color: var(--highlight-2-dark);
+  border: 1px solid var(--highlight-2-dark);
   &:hover{
-    background-color: var(--bg-color-1-slightly-darker);
+    background-color: var(--highlight-2-very-light);
   }
 }
 .navbar-settings-signup{
   color: var(--txt-color-1);
-  background-color: var(--bg-color-2);
+  background-color: var(--highlight-2);
   &:hover{
-    background-color: var(--bg-color-2-slightly-darker);
+    background-color: var(--highlight-2-dark);
   }
 }
