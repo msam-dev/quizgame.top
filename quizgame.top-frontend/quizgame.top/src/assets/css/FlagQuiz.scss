@@ -28,15 +28,17 @@
   text-decoration: none;
   color: var(--txt-color-2);
 }
+
 .flag-quiz-exit-icon{
   font-size: 27px;
   background-color: var(--bg-color-2);
   color: var(--txt-color-1);
   border-radius: 3px;  
   padding-right: 2px;
-}
-.flag-quiz-exit-icon:hover{
-  outline: 3px solid var(--bg-color-2-light);
+
+  &:hover{
+    outline: 3px solid var(--bg-color-2-light);
+  }
 }
 
 .flag-quiz-score-container{
