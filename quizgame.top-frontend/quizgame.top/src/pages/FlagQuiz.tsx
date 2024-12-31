@@ -2,6 +2,7 @@ import '../assets/css/FlagQuiz.scss';
 import countries from '../assets/data/Countries.json';
 import MultipleChoiceImage from '../assets/components/MultipleChoiceImage';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { HiArrowRight } from "react-icons/hi";
 import { IoCaretBack } from "react-icons/io5";
 
@@ -109,7 +110,7 @@ const MultipleChoiceQuiz = () => {
     <div className='flag-quiz-outer-container'>
       <div className='flag-quiz-header'>
         <div className='flag-quiz-exit-container'>
-          <b><a className='flag-quiz-exit' href='/'><IoCaretBack  className='flag-quiz-exit-icon'/> </a></b>
+          <Link to='/' className='flag-quiz-exit'><IoCaretBack className='flag-quiz-exit-icon'/> </Link>
         </div>
         <div className='flag-quiz-title'>
         </div>
