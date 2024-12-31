@@ -3,25 +3,25 @@ import countries from '../assets/data/Countries.json';
 import MultipleChoiceImage from '../assets/components/MultipleChoiceImage';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HiArrowRight } from "react-icons/hi";
-import { IoCaretBack } from "react-icons/io5";
+import { HiArrowRight } from 'react-icons/hi';
+import { IoCaretBack } from 'react-icons/io5';
 
 const MultipleChoiceQuiz = () => {
 
   useEffect(() => { newQuestion() }, []);
 
-  const [country1, setCountry1]           = useState<string>("");
-  const [country2, setCountry2]           = useState<string>(""); 
-  const [country3, setCountry3]           = useState<string>("");
-  const [country4, setCountry4]           = useState<string>("");
-  const [class1,   setClass1]             = useState<string>("");
-  const [class2,   setClass2]             = useState<string>(""); 
-  const [class3,   setClass3]             = useState<string>("");
-  const [class4,   setClass4]             = useState<string>("");
-  const [flagImg,  setFlagImg ]           = useState<string>("");
-  const [answer,   setAnswer  ]           = useState<string>("");
+  const [country1, setCountry1]           = useState<string>('');
+  const [country2, setCountry2]           = useState<string>(''); 
+  const [country3, setCountry3]           = useState<string>('');
+  const [country4, setCountry4]           = useState<string>('');
+  const [class1,   setClass1]             = useState<string>('');
+  const [class2,   setClass2]             = useState<string>(''); 
+  const [class3,   setClass3]             = useState<string>('');
+  const [class4,   setClass4]             = useState<string>('');
+  const [flagImg,  setFlagImg ]           = useState<string>('');
+  const [answer,   setAnswer  ]           = useState<string>('');
   const [submitted, setSubmitted]         = useState<boolean>(false);
-  const [nextQuestionClass, setNextClass] = useState<string>("hide");
+  const [nextQuestionClass, setNextClass] = useState<string>('hide');
   const [questionCount, setQuestionCount] = useState<number>(0);
   const [score, setScore]                 = useState<number>(0);
 

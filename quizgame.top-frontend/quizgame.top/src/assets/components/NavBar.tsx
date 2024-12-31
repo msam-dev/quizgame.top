@@ -1,12 +1,9 @@
 import '../css/Navbar.scss';
-
 import title from '../images/quizgame-title-LD.png';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import { AiTwotoneSetting } from "react-icons/ai";
-import { AiOutlineClose } from "react-icons/ai";
-
+import { AiTwotoneSetting } from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';
 
 const Navbar = () => {
 
@@ -22,7 +19,7 @@ const Navbar = () => {
 
   return (
     <div className='navbar-container'>
-      <div className="navbar-content">
+      <div className='navbar-content'>
         <div className='navbar-logo-container'>
           <Link to='/'><img className='navbar-logo' src={title}/></Link>
         </div>
