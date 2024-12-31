@@ -9,8 +9,6 @@ const MultipleChoiceQuiz = () => {
 
   useEffect(() => { newQuestion() }, []);
 
-  const [score,    setScore]              = useState<number>(0);
-  const [questionCount, setQuestionCount] = useState<number>(0);
   const [country1, setCountry1]           = useState<string>("");
   const [country2, setCountry2]           = useState<string>(""); 
   const [country3, setCountry3]           = useState<string>("");
@@ -23,6 +21,9 @@ const MultipleChoiceQuiz = () => {
   const [answer,   setAnswer  ]           = useState<string>("");
   const [submitted, setSubmitted]         = useState<boolean>(false);
   const [nextQuestionClass, setNextClass] = useState<string>("hide");
+  const [questionCount, setQuestionCount] = useState<number>(0);
+  const [score, setScore]                 = useState<number>(0);
+
 
   /**
    * Handles the logic when a user proceeds to the next question
@@ -41,10 +42,10 @@ const MultipleChoiceQuiz = () => {
     setCountry2(countries[arr[1]].name);
     setCountry3(countries[arr[2]].name);
     setCountry4(countries[arr[3]].name);
-    setClass1('default');
-    setClass2('default');
-    setClass3('default');
-    setClass4('default');
+    setClass1('active');
+    setClass2('active');
+    setClass3('active');
+    setClass4('active');
 
     const index: number = Math.floor(Math.random() * 4);
     setAnswer(countries[arr[index]].name);
@@ -60,6 +61,11 @@ const MultipleChoiceQuiz = () => {
    */ 
   const submit = (guess: string) => {
     if(submitted) return;
+
+    setClass1('inactive');
+    setClass2('inactive');
+    setClass3('inactive');
+    setClass4('inactive');
 
     switch(answer) {
       case country1:

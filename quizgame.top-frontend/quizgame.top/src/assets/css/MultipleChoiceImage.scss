@@ -45,17 +45,16 @@
   border-radius: 5px;
   overflow: hidden;
   color: var(--txt-color-2);
-  cursor: pointer;
+  cursor:initial;
   
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 
-  &.default{
-    outline: 1px solid var(--highlight-2);
-    background-color: var(--highlight-2-light);
-  }
+  outline: 1px solid var(--highlight-2);
+  background-color: var(--highlight-2-light);
+
   &.correct{
     outline: 3px solid var(--highlight-1);
     background-color: var(--highlight-1-light);
@@ -64,7 +63,8 @@
     outline: 3px solid var(--highlight-5);
     background-color: var(--highlight-5-light);
   }
-  &:hover{
+  &.active:hover{
     outline-width: 3px;
+    cursor: pointer;
   }
 }
