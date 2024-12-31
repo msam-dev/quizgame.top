@@ -1,5 +1,3 @@
-@import "index.scss";
-
 .navbar-container{
   width: 100%;
 }
@@ -39,7 +37,7 @@
 .navbar-settings-icon{
   margin-right: 15px;
   font-size: clamp(28px, 8vw, 40px);
-  transition: transform 0.4s ease;
+  transition: transform 0.25s ease;
   color: var(--txt-color-2);
 }
 
@@ -60,7 +58,6 @@
     visibility: visible;
   }
 }
-
 .navbar-settings-drawer-overlay {
   position: fixed;
   top: 0;
@@ -70,32 +67,87 @@
   transition: 0.2s ease;
 
   &.true {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
   }
 }
-
 .navbar-settings-drawer {
   position: fixed;
   top: 0;
   right: 0;
   width: 0;
   height: 100%;
-  // background: var(--bg-color-1);
-  // overflow-y: auto;
-  // overflow-x: hidden;
+  background: var(--bg-color-1);
+  color: var(--txt-color-2);
+
+  //overflow-y: auto;
+  //overflow-x: hidden;
   transition: 0.2s ease;
 
   &.true {
-    width: 50vw;
+    width: 345px;
   }
 }
 
-.navbar-settings-close-button{
-  color: var(--txt-color-2);
-  cursor: pointer;
-  position: absolute;
-  padding-right: 15px;
+.navbar-settings-header{
   padding-top: 5px;
-  right: 0px;
+  padding-bottom: 5px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  justify-content: space-between;
+}
+
+.navbar-settings-title{
+  font-size: min(3vh, 30px);  
+  padding-left: 15px;
+}
+
+.navbar-settings-close-button{
+  cursor: pointer;
+  margin-right: 15px;
   font-size: clamp(26px, 7.5vw, 38px);
+
+  &:hover{
+    //outline: 1px solid black;
+    background-color: var(--bg-color-1-slightly-darker);
+    border-radius: 5px;
+  }
+}
+
+
+.navbar-settings-body{
+
+}
+
+
+.navbar-settings-user-auth{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.navbar-settings-login, 
+.navbar-settings-signup{
+  width: fit-content;
+  padding:10px;
+  margin: 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navbar-settings-login{
+  color: var(--txt-color-2);
+  border: 1px solid var(--bg-color-2);
+  &:hover{
+    background-color: var(--bg-color-1-slightly-darker);
+  }
+}
+.navbar-settings-signup{
+  color: var(--txt-color-1);
+  background-color: var(--bg-color-2);
+  &:hover{
+    background-color: var(--bg-color-2-slightly-darker);
+  }
 }
