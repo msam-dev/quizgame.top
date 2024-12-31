@@ -20,10 +20,10 @@
 }
 
 .navbar-logo-container{
-  padding-left: 2px;
-  width: clamp(140px, 40vw, 220px);
-  display: flex;
-  justify-content: end;
+  padding-left: 15px;
+  //width: clamp(140px, 40vw, 220px);
+  //display: flex;
+  //justify-content: end;
 }
 
 .navbar-logo{
@@ -31,19 +31,71 @@
   height: clamp(28px, 8vw, 40px);
 }
 
-.navbar-settings-container{
+.navbar-settings-icon-container{
   display: flex;
   align-items: center;
-  padding-right: 10px;
 }
 
-.navbar-settings{
+.navbar-settings-icon{
+  margin-right: 15px;
+  font-size: clamp(28px, 8vw, 40px);
+  transition: transform 0.4s ease;
   color: var(--txt-color-2);
-  text-decoration: none;
-  //padding-top: 12px;
-  //padding-right: 20px;
-  padding-left: 8px;
-  margin-left: 3px;
-  padding-right: 8px;
-  margin-right: 3px;
+}
+
+.navbar-settings-icon:hover{
+  transform: rotate(90deg);
+  cursor: pointer;
+}
+
+
+// css for pop-out settings drawer
+.navbar-settings-drawer-container {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s ease;
+
+  &.true {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.navbar-settings-drawer-overlay {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: 0.2s ease;
+
+  &.true {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.navbar-settings-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  // background: var(--bg-color-1);
+  // overflow-y: auto;
+  // overflow-x: hidden;
+  transition: 0.2s ease;
+
+  &.true {
+    width: 50vw;
+  }
+}
+
+.navbar-settings-close-button{
+  color: var(--txt-color-2);
+  cursor: pointer;
+  position: absolute;
+  padding-right: 15px;
+  padding-top: 5px;
+  right: 0px;
+  font-size: clamp(26px, 7.5vw, 38px);
 }
