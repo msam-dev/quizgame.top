@@ -2,25 +2,29 @@ import '../assets/css/FlagQuiz.scss';
 import countries from '../assets/data/Countries.json';
 import MultipleChoiceImage from '../assets/components/MultipleChoiceImage';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { HiArrowRight } from 'react-icons/hi';
+import { IoCaretBack } from 'react-icons/io5';
 
 const MultipleChoiceQuiz = () => {
 
   useEffect(() => { newQuestion() }, []);
 
-  const [score,    setScore]              = useState<number>(0);
-  const [questionCount, setQuestionCount] = useState<number>(0);
-  const [country1, setCountry1]           = useState<string>("");
-  const [country2, setCountry2]           = useState<string>(""); 
-  const [country3, setCountry3]           = useState<string>("");
-  const [country4, setCountry4]           = useState<string>("");
-  const [class1,   setClass1]             = useState<string>("");
-  const [class2,   setClass2]             = useState<string>(""); 
-  const [class3,   setClass3]             = useState<string>("");
-  const [class4,   setClass4]             = useState<string>("");
-  const [flagImg,  setFlagImg ]           = useState<string>("");
-  const [answer,   setAnswer  ]           = useState<string>("");
+  const [country1, setCountry1]           = useState<string>('');
+  const [country2, setCountry2]           = useState<string>(''); 
+  const [country3, setCountry3]           = useState<string>('');
+  const [country4, setCountry4]           = useState<string>('');
+  const [class1,   setClass1]             = useState<string>('');
+  const [class2,   setClass2]             = useState<string>(''); 
+  const [class3,   setClass3]             = useState<string>('');
+  const [class4,   setClass4]             = useState<string>('');
+  const [flagImg,  setFlagImg ]           = useState<string>('');
+  const [answer,   setAnswer  ]           = useState<string>('');
   const [submitted, setSubmitted]         = useState<boolean>(false);
-  const [nextQuestionClass, setNextClass] = useState<string>("hide");
+  const [nextQuestionClass, setNextClass] = useState<string>('hide');
+  const [questionCount, setQuestionCount] = useState<number>(0);
+  const [score, setScore]                 = useState<number>(0);
+
 
   /**
    * Handles the logic when a user proceeds to the next question
@@ -39,10 +43,10 @@ const MultipleChoiceQuiz = () => {
     setCountry2(countries[arr[1]].name);
     setCountry3(countries[arr[2]].name);
     setCountry4(countries[arr[3]].name);
-    setClass1('default');
-    setClass2('default');
-    setClass3('default');
-    setClass4('default');
+    setClass1('active');
+    setClass2('active');
+    setClass3('active');
+    setClass4('active');
 
     const index: number = Math.floor(Math.random() * 4);
     setAnswer(countries[arr[index]].name);
@@ -58,6 +62,11 @@ const MultipleChoiceQuiz = () => {
    */ 
   const submit = (guess: string) => {
     if(submitted) return;
+
+    setClass1('inactive');
+    setClass2('inactive');
+    setClass3('inactive');
+    setClass4('inactive');
 
     switch(answer) {
       case country1:
@@ -101,10 +110,9 @@ const MultipleChoiceQuiz = () => {
     <div className='flag-quiz-outer-container'>
       <div className='flag-quiz-header'>
         <div className='flag-quiz-exit-container'>
-          <a className='flag-quiz-exit' href='/'>End Quiz </a>
+          <Link to='/' className='flag-quiz-exit'><IoCaretBack className='flag-quiz-exit-icon'/> </Link>
         </div>
         <div className='flag-quiz-title'>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/* Endless Flag Quiz (World) */}
         </div>
         <div className='flag-quiz-score-container'>
           Score: {score}/{questionCount} 
@@ -124,7 +132,8 @@ const MultipleChoiceQuiz = () => {
       />
       <div className='flag-quiz-next-button-container'>
         <div className={`flag-quiz-next-button ${nextQuestionClass}`} onClick={newQuestion}>
-          <b>Next Question</b>
+          Next Question
+          <HiArrowRight className='flag-quiz-next-arrow'/>
         </div>
       </div>
     </div>

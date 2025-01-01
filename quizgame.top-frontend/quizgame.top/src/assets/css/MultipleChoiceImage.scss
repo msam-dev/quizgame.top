@@ -1,5 +1,3 @@
-@import 'index.scss';
-
 .multiple-choice-container{
   width: clamp(290px, 94vw, 620px);
 }
@@ -45,25 +43,26 @@
   border-radius: 5px;
   overflow: hidden;
   color: var(--txt-color-2);
-  cursor: pointer;
+  cursor:initial;
   
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-.multiple-choice-button.default{
+
   outline: 1px solid var(--highlight-2);
   background-color: var(--highlight-2-light);
-}
-.multiple-choice-button.correct{
-  outline: 3px solid var(--highlight-1);
-  background-color: var(--highlight-1-light);
-}
-.multiple-choice-button.incorrect{
-  outline: 3px solid var(--highlight-5);
-  background-color: var(--highlight-5-light);
-}
-.multiple-choice-button:hover{
-  outline-width: 3px;
+
+  &.correct{
+    outline: 3px solid var(--highlight-1);
+    background-color: var(--highlight-1-light);
+  }
+  &.incorrect{
+    outline: 3px solid var(--highlight-5);
+    background-color: var(--highlight-5-light);
+  }
+  &.active:hover{
+    outline-width: 3px;
+    cursor: pointer;
+  }
 }
