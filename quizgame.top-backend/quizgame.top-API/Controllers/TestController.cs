@@ -7,7 +7,7 @@ namespace quizgame.top.API.Controllers;
 /// Test class used to create example endpoints that can be used as a template 
 /// </summary>
 [ApiController]
-[Route("api/test")]
+[Route("test/")]
 public class TestController(ILogger<TestController> logger) : ControllerBase
 {
     
@@ -23,7 +23,7 @@ public class TestController(ILogger<TestController> logger) : ControllerBase
 
 #if DEBUG
         string caller = Request.Headers.Referer.ToString();
-        logger.Log(LogLevel.Information, $"endpoint api/test/get was called from {caller} and returned: {message}"); 
+        logger.Log(LogLevel.Information, $"endpoint test/get was called from {caller} and returned: {message}"); 
 #endif
         
         return message;
@@ -44,7 +44,7 @@ public class TestController(ILogger<TestController> logger) : ControllerBase
 
 #if DEBUG
         string caller = Request.Headers.Referer.ToString();
-        logger.Log(LogLevel.Information, $"endpoint api/test/post/{id} was called from {caller} and returned: {message}");
+        logger.Log(LogLevel.Information, $"endpoint test/post/{id} was called from {caller} and returned: {message}");
 #endif
 
         return message;
