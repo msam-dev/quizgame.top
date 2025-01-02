@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../assets/css/Login.scss';
 import { useState } from 'react';
+import { useQuizGameContext } from '../assets/components/QuizGameContext';
 
 const Login = () => {
   
@@ -14,6 +15,7 @@ const Login = () => {
   const [password, setPassword]         = useState<string>('');
   const [message, setMessage]           = useState<string>('');  
   const [messageClass, setMessageClass] = useState<string>('');
+  const setUser = useQuizGameContext().setUsername;
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // stops page from reloading
@@ -56,6 +58,7 @@ const Login = () => {
     })
     .then((data) => {
       setSuccess("Login successful! Hello, "+ data.username);
+      setUser(data.username);
       console.log(data);
     })
     .catch((err) => {

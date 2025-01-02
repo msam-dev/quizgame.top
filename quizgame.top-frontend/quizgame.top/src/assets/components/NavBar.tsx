@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiTwotoneSetting } from 'react-icons/ai';
 import { AiOutlineClose } from 'react-icons/ai';
+import { useQuizGameContext } from './QuizGameContext';
 
 const Navbar = () => {
-
+  const username = useQuizGameContext().username;
   const [open, setOpen] = useState<boolean>(false);
 
   const openSettings = () => {
@@ -37,6 +38,7 @@ const Navbar = () => {
           
           <div className='navbar-settings-body'>
             <div className='navbar-settings-user-auth'>
+              <div>{username}</div>
               <Link to='/login' className='navbar-settings-login' onClick={closeSettings}>Log in</Link>
               <Link to='/signup' className='navbar-settings-signup' onClick={closeSettings}>Sign up</Link>
             </div>
