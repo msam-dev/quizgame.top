@@ -9,8 +9,8 @@ const Test = () => {
   //const url: string = 'https://localhost:7025';
   const url: string = 'https://api.quizgame.top';
 
-  const getEndpoint: string = url+'/api/test/get/';
-  const postEndpoint: string = url+'/api/test/post/';
+  const getEndpoint: string = url+'/test/get/';
+  const postEndpoint: string = url+'/test/post/';
 
   const [apiGetResponse, setGetResponse] = useState([]);
   const [apiPostResponse, setPostResponse] = useState([]);
