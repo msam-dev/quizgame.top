@@ -1,10 +1,10 @@
-import '../assets/css/Home.scss';
-import { Link } from 'react-router-dom';
+import '../assets/css/Signup.scss';
+// import { Link } from 'react-router-dom';
 
 const Signup = () => {
   return (
-    <div className='home-container'>
-      <div className="home-welcome-card">
+    <div className='signup-container'>
+      <div className="signup-inner-container">
         Signup
       </div> 
     </div> 
