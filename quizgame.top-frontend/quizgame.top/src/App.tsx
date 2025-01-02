@@ -12,10 +12,10 @@ const App = () => {
     <Router>
       <Routes>
         <Route path='/' element={<Layout/>}>
-          <Route index                        element = {<Home />} />
-          <Route path = '/Login'              element = {<Login />} />
-          <Route path = '/Signup'             element = {<Signup />} />
-          <Route path = '/Test'               element = {<Test />} />
+          <Route index                        element = {<Home     />} />
+          <Route path = '/Login'              element = {<Login    />} />
+          <Route path = '/Signup'             element = {<Signup   />} />
+          <Route path = '/Test'               element = {<Test     />} />
           <Route path = '/world-flag-quiz-mc' element = {<FlagQuiz />} />
         </Route>
       </Routes>

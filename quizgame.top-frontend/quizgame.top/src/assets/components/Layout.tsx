@@ -4,7 +4,7 @@ import Navbar from './NavBar';
 /**
  * Adding navbar to all pages
  */
-function Layout() {
+const Layout = () => {
   return (
     <>
       <Navbar />
