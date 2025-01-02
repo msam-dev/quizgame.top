@@ -7,7 +7,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 
 const Navbar = () => {
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const openSettings = () => {
     setOpen(true);

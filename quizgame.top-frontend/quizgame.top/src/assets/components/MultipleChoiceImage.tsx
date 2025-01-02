@@ -3,21 +3,21 @@ import { useState } from 'react';
 import  Flag from 'react-world-flags';
 
 interface MultipleChoiceImageProps {
-  option1:   string; 
-  option2:   string;
-  option3:   string;
-  option4:   string;
-  class1:    string;
-  class2:    string;
-  class3:    string;
-  class4:    string;
-  imageUrl:  string;
-  submit:    (guess: string) => void;
+  option1:  string; 
+  option2:  string;
+  option3:  string;
+  option4:  string;
+  class1:   string;
+  class2:   string;
+  class3:   string;
+  class4:   string;
+  imageUrl: string;
+  submit:   (guess: string) => void;
 }
 
 const MultipleChoiceImage = ({ option1, option2, option3, option4, class1, class2, class3, class4, imageUrl, submit }: MultipleChoiceImageProps) => {
   
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   const handleImageLoad = () => {
     setIsLoaded(true);
