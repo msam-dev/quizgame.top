@@ -1,4 +1,4 @@
-import { useState, useContext, createContext, Dispatch, SetStateAction} from 'react';
+import { useState, useContext, createContext, Dispatch, SetStateAction, useEffect} from 'react';
 
 /**
  * Context interface for QuizGame.top  
@@ -7,9 +7,10 @@ import { useState, useContext, createContext, Dispatch, SetStateAction} from 're
  */
 interface QuizGameContextType {
   username: string;
-  setUsername: Dispatch<SetStateAction<string>>;
-  jwt: string;
-  setJwt: Dispatch<SetStateAction<string>>;
+  token: string;
+  setUser: (username: string, token: string) => void;
+  clearUser: () => void;
+
 }
 
 interface ProviderProps {
@@ -28,16 +29,41 @@ export const useQuizGameContext = () => {
 
   return context;
 };
+///////TODO: implement local storage
 
 export const QuizGameContextProvider = ({ children }: ProviderProps) => {
   const [username, setUsername] = useState<string>('');
-  const [jwt, setJwt] = useState<string>('');
+  const [token, setToken] = useState<string>('');
+
+  useEffect(() => {
+    // load from storage on mount
+    const storedUsername = localStorage.getItem('username');
+    const storedToken = localStorage.getItem('token');
+    if (storedUsername && storedToken) {
+      setUsername(storedUsername);
+      setToken(storedToken);
+    }
+  }, []);
+  
+  const setUser = (username: string, token: string) => {
+    setUsername(username);
+    setToken(token);
+    localStorage.setItem('username', username);
+    localStorage.setItem('token', token);
+  };
+
+  const clearUser = () => {
+    setUsername('');
+    setToken('');
+    localStorage.removeItem('username');
+    localStorage.removeItem('token');
+  };
 
   const context: QuizGameContextType = {
     username,
-    setUsername,
-    jwt,
-    setJwt,
+    token,
+    setUser,
+    clearUser
   };
 
   return (

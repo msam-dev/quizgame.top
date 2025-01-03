@@ -12,10 +12,9 @@ const Navbar = () => {
 
   const { message } = App.useApp();
 
-  const username = useQuizGameContext().username;
-  const setUsername = useQuizGameContext().setUsername;
+  const context = useQuizGameContext();
   const [open, setOpen] = useState<boolean>(false);
-  const loggedIn: boolean = username != '';
+  const loggedIn: boolean = context.username != '';
 
   const openSettings = () => {
     setOpen(true);
@@ -28,7 +27,7 @@ const Navbar = () => {
   const logout = () => {
     closeSettings();
     navigate('/');
-    setUsername('');
+    context.clearUser();
     message.info('You have been logged out');
   }
 
