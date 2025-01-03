@@ -121,20 +121,23 @@
 
 }
 
-
 .navbar-settings-user-auth{
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-.navbar-settings-login, 
-.navbar-settings-signup{
+
+.navbar-settings-login, .navbar-settings-signup{
   width: fit-content;
   padding:10px;
   margin: 2px;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
+
+  &.true{
+    display: none;
+  }
 }
 
 .navbar-settings-login{
@@ -149,5 +152,12 @@
   background-color: var(--highlight-2);
   &:hover{
     background-color: var(--highlight-2-dark);
+  }
+}
+
+.navbar-settings-logout{
+
+  &.false{
+    display: none;
   }
 }
