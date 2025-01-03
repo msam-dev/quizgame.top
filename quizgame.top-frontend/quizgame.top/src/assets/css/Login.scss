@@ -75,6 +75,11 @@
   &:hover{
     background-color: var(--highlight-2-dark);
   }
+
+  &.true{
+    background-color: var(--highlight-2-dark);
+    cursor: wait;
+  }
 }
 
 .login-signup{

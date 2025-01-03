@@ -15,9 +15,9 @@ const Login = () => {
   const { message } = App.useApp();
 
   const navigate = useNavigate();
-  const setUser = context.setUsername;
   const loggedIn: boolean = context.username != '';
 
+  const [loading, setLoading]                 = useState<boolean>(false);
   const [username, setUsername]               = useState<string>('');
   const [password, setPassword]               = useState<string>('');
   const [messageClass, setMessageClass]       = useState<string>('');
@@ -32,14 +32,16 @@ const Login = () => {
     e.preventDefault(); // stops page from reloading
 
     message.info('You have been logged out');
-    context.setUsername('');
+    context.clearUser();
   };
 
   /**
    * Handles login form submission
    */
   const handleSubmit = (e: React.FormEvent) => {
+
     e.preventDefault(); // stops page from reloading
+    if(loading) return;
 
     // validation 
     if (!username || !password) {
@@ -60,6 +62,7 @@ const Login = () => {
    */
   const requestLogin = () => {
     message.loading('Logging in, please wait...');
+    setLoading(true);
     
     fetch(loginEndPoint, {method: "POST",
       headers: { "Content-Type": "application/json",},
@@ -67,7 +70,8 @@ const Login = () => {
     })
     .then((response) => {
       message.destroy(); // clears the loading message
-      
+      setLoading(false);
+
       if (response.ok) { return response.json(); }
 
       return response.json().then((errorData) => {
@@ -76,7 +80,7 @@ const Login = () => {
     })
     .then((data) => {
       message.success('Login successful! Hello, '+ data.username);
-      setUser(data.username);
+      context.setUser(data.username, data.token);
       navigate('/');
     })
     .catch((err: Error) => {
@@ -87,12 +91,14 @@ const Login = () => {
   return (
     <div className='login-container'>
       <div className='login-inner-container'>
+
         <form onSubmit={logOut} className={`logout-form ${loggedIn}`}>
           <div className='message' >You are already logged in as: <b>{context.username}</b></div>
           <button type='submit' className='login-button'>
             Log Out
           </button>
         </form>
+
         <form onSubmit={handleSubmit} className={`login-form ${loggedIn}`}>
         <div className={`login-message ${messageClass}`}>{validationError}</div>
         <div className='login-field'>
@@ -106,7 +112,6 @@ const Login = () => {
             maxLength={10}
           />
         </div>
-
         <div className='login-field'>
           <label htmlFor='password' className='login-label'>Password:</label>
           <input
@@ -118,7 +123,7 @@ const Login = () => {
             maxLength={20}
           />
         </div>
-        <button type='submit' className='login-button'>
+        <button type='submit' className={`login-button ${loading}`}>
           Log in
         </button>
       </form>
