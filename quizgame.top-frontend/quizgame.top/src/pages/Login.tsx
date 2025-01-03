@@ -10,11 +10,13 @@ const Login = () => {
 //const loginEndPoint: string = 'https://api.quizgame.top/user/login/';
 
   const regex: RegExp = /^[a-zA-Z0-9-_]+$/;
+  const context = useQuizGameContext();
 
   const { message } = App.useApp();
 
   const navigate = useNavigate();
-  const setUser = useQuizGameContext().setUsername;
+  const setUser = context.setUsername;
+  const loggedIn: boolean = context.username != '';
 
   const [username, setUsername]               = useState<string>('');
   const [password, setPassword]               = useState<string>('');
@@ -24,7 +26,14 @@ const Login = () => {
   const setError = (errorMessage: string) => {
     setValidationError(errorMessage);
     setMessageClass('error');
-  }
+  };
+
+  const logOut = (e: React.FormEvent) => {
+    e.preventDefault(); // stops page from reloading
+
+    message.info('You have been logged out');
+    context.setUsername('');
+  };
 
   /**
    * Handles login form submission
@@ -78,7 +87,13 @@ const Login = () => {
   return (
     <div className='login-container'>
       <div className='login-inner-container'>
-      <form onSubmit={handleSubmit} className='login-form'>
+        <form onSubmit={logOut} className={`logout-form ${loggedIn}`}>
+          <div className='message' >You are already logged in as: <b>{context.username}</b></div>
+          <button type='submit' className='login-button'>
+            Log Out
+          </button>
+        </form>
+        <form onSubmit={handleSubmit} className={`login-form ${loggedIn}`}>
         <div className={`login-message ${messageClass}`}>{validationError}</div>
         <div className='login-field'>
           <label htmlFor='username' className='login-label'>Username:</label>
@@ -108,7 +123,7 @@ const Login = () => {
         </button>
       </form>
       </div> 
-      <div className='login-signup'> Don't have an account? <Link to='/signup'>Sign Up</Link></div>
+      <div className={`login-signup ${loggedIn}`}> Don't have an account? <Link to='/signup'><u>Sign Up</u></Link></div>
     </div> 
   );
 }

@@ -19,6 +19,15 @@
 
 .login-form {
   padding: 25px;
+  &.true{
+    display: none;
+  }
+}
+.logout-form {
+  padding: 25px;
+  &.false{
+    display: none;
+  }
 }
 
 .login-message {
@@ -71,4 +80,13 @@
 .login-signup{
   padding-top: 4vh;
   font-size: min(3.5vw, 15px);  
+  &.true{
+    display: none;
+  }
+}
+
+.message{
+  width: 100% ;
+  padding-bottom: 25px;
+  font-size: min(3.5vw, 16px);  
 }
