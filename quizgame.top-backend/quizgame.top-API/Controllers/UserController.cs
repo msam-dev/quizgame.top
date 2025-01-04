@@ -33,20 +33,23 @@ public class UserController(ILogger<TestController> logger, IConfiguration confi
     [HttpPost("login")]
     public IActionResult Login(LoginRequest request)
     {
+        Thread.Sleep(2000);
+
         // mock user data// replace with hashed passwords in production
         User user = new User
         {
-            Username = "username123",
-            Password = "password123"
+            Username = "username",
+            Password = "password"
         };
-
+        
         if (user.Username != request.Username || user.Password != request.Password)
         {
             return Unauthorized(new { message = "Invalid username or password" });
         }
 
         string token = GenerateJwtToken(user);
-        return Ok(new { token });
+        string username = user.Username;
+        return Ok(new { username, token });
     }
 
     //TODO: fix JWT KEY, ISSUER, AND AUDIENCE 
