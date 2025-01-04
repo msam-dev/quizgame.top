@@ -39,11 +39,10 @@ const Login = () => {
    * Handles login form submission
    */
   const handleSubmit = (e: React.FormEvent) => {
-
     e.preventDefault(); // stops page from reloading
+
     if(loading) return;
 
-    // validation 
     if (!username || !password) {
       setError('Please enter Username and Password');
       return;
@@ -61,30 +60,40 @@ const Login = () => {
    * Contacts the login API endpoint and handles the response
    */
   const requestLogin = () => {
-    message.loading('Logging in, please wait...');
+    const controller = new AbortController(); 
+    const timeout = setTimeout(() => { controller.abort(); }, 5000); // 5 second timeout
+
+    message.loading('Logging in, please wait...', 0);
     setLoading(true);
     
-    fetch(loginEndPoint, {method: "POST",
+    fetch(loginEndPoint, {
+      method: "POST",
       headers: { "Content-Type": "application/json",},
       body: JSON.stringify({ username, password }),
+      signal: controller.signal,
     })
     .then((response) => {
-      message.destroy(); // clears the loading message
-      setLoading(false);
-
-      if (response.ok) { return response.json(); }
-
-      return response.json().then((errorData) => {
-        throw new Error(errorData.message || "Login failed");
-      });
+      if (response.ok) { 
+        return response.json(); 
+      }else{
+        return response.json().then((errorData) => {
+          throw new Error(errorData.message || "Login failed");
+        });
+      }
     })
     .then((data) => {
+      clearTimeout(timeout); 
+      setLoading(false);
+      message.destroy(); // clears the loading message
       message.success('Login successful! Hello, '+ data.username);
       context.setUser(data.username, data.token);
       navigate('/');
     })
     .catch((err: Error) => {
-      message.error(err.message);
+      clearTimeout(timeout); 
+      setLoading(false);
+      message.destroy(); 
+      message.error(err.name==="AbortError" ? "Request timed out. Please try again." : err.message);
     });
   };
 
