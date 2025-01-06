@@ -54,6 +54,13 @@ const Navbar = () => {
               <Link to='/login' className={`navbar-settings-login ${loggedIn}`} onClick={closeSettings}>Log in</Link>
               <Link to='/signup' className={`navbar-settings-signup ${loggedIn}`} onClick={closeSettings}>Sign up</Link>
             </div>
+            
+            <br/><br/>
+            <Link to='/world-flag-quiz-mc'>Flags Of The World (Multiple Choice)</Link><br/>
+            <Link to='/test'>API testing</Link><br/>
+            <Link to='/login'>Log in</Link><br/>
+            <Link to='/signup'>Sign up</Link><br/>
+            <Link to='/signup'>Full List of Games</Link><br/>
           </div>
         </div>
       </div> 
