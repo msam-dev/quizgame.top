@@ -1,14 +1,118 @@
 .home-container{
   display: flex;
-  flex-direction: column;
   width: 100%;
+  justify-content: center;
 }
 
-.home-welcome-card{
+.home-inner-container{
   display: flex;
   flex-direction: column;
-  text-align: center;
   color: var(--txt-color-2);
-  width: 100%;
+  justify-content: center;
+  width: clamp(100px, 100%, 700px);
+  padding: 10px;//clamp(10px, 10vw, 200px);
   padding-top: 10%;
+}
+
+.home-greeting{
+  font-size: clamp(25px, 3vw, 40px);
+
+  &.false{
+    display: none;
+  }
+}
+
+.home-popular-games-container{
+  
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.home-icon{
+  padding-left: 10px;
+  min-width: min(8vh, 80px);  
+  font-size: min(6vh, 60px);  
+  transition: all;
+  transition-duration: 0.2s;
+}
+
+.home-popular-game{
+  height: 100px;
+  //height: clamp(40px, 13vh, 120px);
+  width: clamp(50px, 100vw, 350px);
+  margin: clamp(0px, 1vw, 5px);
+  
+  border-radius: 5px;
+  overflow: hidden;
+  color: var(--txt-color-2);
+  cursor:initial;
+  
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  //outline: 1px solid var(--highlight-2);
+
+
+  &:hover{
+    outline-width: 3px;
+    cursor: pointer;
+    box-shadow: 0 0 3px 3px var(--shadow);
+
+    .home-icon{
+      font-size: min(8vh, 80px);  
+    }
+  }
+
+  &.index-1{
+    background-color: var(--highlight-2-light);
+    &:hover{
+      outline: 2px solid var(--highlight-2);
+      .home-popular-game-title{
+      }
+
+    }
+  }
+  &.index-2{
+    background-color: var(--highlight-3-light);
+  }
+  &.index-3{
+    background-color: var(--highlight-1-light);
+  }
+  &.index-4{
+    background-color: var(--highlight-4-light);
+  }
+}
+
+.home-popular-game-image{
+  max-width: 100%;
+  
+
+}
+.home-popular-game-text{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-games-title{
+  font-size: min(4vh, 40px);  
+}
+
+.home-popular-game-title{
+  font-size: min(3vh, 30px);  
+
+
+}
+
+.home-popular-game-description{
+  
+}
+
+.home-list-link{
+  font-size: min(2vh, 20px);  
+
+  padding-top: 10px;
+  text-align: center;
 }

@@ -44,6 +44,13 @@ const Navbar = () => {
               <Link to='/login' className={`navbar-settings-login ${context.loggedIn}`} onClick={() => setOpen(false)}>Log in</Link>
               <Link to='/signup' className={`navbar-settings-signup ${context.loggedIn}`} onClick={() => setOpen(false)}>Sign up</Link>
             </div>
+            
+            <br/><br/>
+            <Link to='/world-flag-quiz-mc'>Flags Of The World (Multiple Choice)</Link><br/>
+            <Link to='/test'>API testing</Link><br/>
+            <Link to='/login'>Log in</Link><br/>
+            <Link to='/signup'>Sign up</Link><br/>
+            <Link to='/signup'>Full List of Games</Link><br/>
           </div>
         </div>
       </div> 
