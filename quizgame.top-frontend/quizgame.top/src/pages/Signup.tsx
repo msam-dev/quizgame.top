@@ -27,8 +27,8 @@ const Signup = () => {
   const warn = () => {
     Modal.warning({ 
       title: 'Warning',
-      content: "For your security, do not use passwords you've used on other platforms. Steps have been taken to protect your data, but it is highly recommended you create a completely new password for this account.",
-      okText: "I Understand",
+      content: 'Steps have been taken to protect your data, but it is highly recommended you cre  te a completely new password for this account. Do not use passwords you\'ve used on other platforms.',
+      okText: 'I Understand',
     });
   }
   
@@ -55,7 +55,7 @@ const Signup = () => {
       return;
     }
     if (!regex.test(username)) {
-      setError("Usernames can only contain letters, numbers, and underscores.");
+      setError('Usernames can only contain letters, numbers, and underscores.');
       return;
     } 
 
@@ -69,15 +69,15 @@ const Signup = () => {
   const requestSignup = () => {
     message.loading('Signing up, please wait...');
     
-    fetch(signUpEndPoint, {method: "POST",
-      headers: { "Content-Type": "application/json",},
+    fetch(signUpEndPoint, {method: 'POST',
+      headers: { 'Content-Type': 'application/json',},
       body: JSON.stringify({ username, password }),
     })
     .then((response) => {
       if (response.ok) return response.json(); 
 
       return response.json().then((errorData) => {
-        throw new Error(errorData.message || "Signup failed");
+        throw new Error(errorData.message || 'Signup failed');
       });
     })
     .then((data) => {
@@ -92,7 +92,7 @@ const Signup = () => {
   return (
     <>
       <div className='signup-container'>
-        <div className="signup-inner-container">
+        <div className='signup-inner-container'>
           <form onSubmit={logOut} className={`logout-form ${context.loggedIn}`}>
             <div className='message' >You are already logged in as: <b>{context.username}</b></div>
             <button type='submit' className='signup-button'>
