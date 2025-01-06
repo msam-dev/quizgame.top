@@ -1,4 +1,4 @@
-import { useState, useContext, createContext, Dispatch, SetStateAction, useEffect} from 'react';
+import { useState, useContext, createContext, useEffect} from 'react';
 
 /**
  * Context interface for QuizGame.top  
@@ -6,15 +6,11 @@ import { useState, useContext, createContext, Dispatch, SetStateAction, useEffec
  * This makes it easy to add additional state to the context in future.
  */
 interface QuizGameContextType {
+  loggedIn: boolean;
   username: string;
   token: string;
   setUser: (username: string, token: string) => void;
-  clearUser: () => void;
-
-}
-
-interface ProviderProps {
-  children: React.ReactNode;
+  logOut: () => void;
 }
 
 const QuizGameContext = createContext<QuizGameContextType | undefined>(undefined);
@@ -29,9 +25,14 @@ export const useQuizGameContext = () => {
 
   return context;
 };
+
 ///////TODO: implement local storage
 
+interface ProviderProps { children: React.ReactNode; }
+
 export const QuizGameContextProvider = ({ children }: ProviderProps) => {
+
+  const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const [username, setUsername] = useState<string>('');
   const [token, setToken] = useState<string>('');
 
@@ -46,13 +47,15 @@ export const QuizGameContextProvider = ({ children }: ProviderProps) => {
   }, []);
   
   const setUser = (username: string, token: string) => {
+    setLoggedIn(true);
     setUsername(username);
     setToken(token);
     localStorage.setItem('username', username);
     localStorage.setItem('token', token);
   };
 
-  const clearUser = () => {
+  const logOut = () => {
+    setLoggedIn(false);
     setUsername('');
     setToken('');
     localStorage.removeItem('username');
@@ -60,10 +63,11 @@ export const QuizGameContextProvider = ({ children }: ProviderProps) => {
   };
 
   const context: QuizGameContextType = {
+    loggedIn,
     username,
     token,
     setUser,
-    clearUser
+    logOut
   };
 
   return (

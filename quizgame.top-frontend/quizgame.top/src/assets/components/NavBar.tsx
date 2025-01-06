@@ -8,26 +8,16 @@ import { useQuizGameContext } from './QuizGameContext';
 import { App } from 'antd';
 
 const Navbar = () => {
+
   const navigate = useNavigate();
-
-  const { message } = App.useApp();
-
   const context = useQuizGameContext();
+  const { message } = App.useApp();
   const [open, setOpen] = useState<boolean>(false);
-  const loggedIn: boolean = context.username != '';
-
-  const openSettings = () => {
-    setOpen(true);
-  };
-
-  const closeSettings = () => {
-    setOpen(false);
-  };
 
   const logout = () => {
-    closeSettings();
+    setOpen(false);
     navigate('/');
-    context.clearUser();
+    context.logOut();
     message.info('You have been logged out');
   }
 
@@ -38,21 +28,21 @@ const Navbar = () => {
           <Link to='/'><img className='navbar-logo' src={title}/></Link>
         </div>
         <div className='navbar-settings-icon-container'>
-          <AiTwotoneSetting className='navbar-settings-icon' onClick={openSettings}/>
+          <AiTwotoneSetting className='navbar-settings-icon' onClick={() => setOpen(true)}/>
         </div> 
       </div>
       <div className={`navbar-settings-drawer-container ${open}`}>
-        <div className={`navbar-settings-drawer-overlay ${open}`} onClick={closeSettings}></div>
+        <div className={`navbar-settings-drawer-overlay ${open}`} onClick={() => setOpen(false)}></div>
         <div className={`navbar-settings-drawer ${open}`}>
           <div className='navbar-settings-header'>
             <div className='navbar-settings-title'></div> 
-            <AiOutlineClose className='navbar-settings-close-button' onClick={closeSettings}/>
+            <AiOutlineClose className='navbar-settings-close-button' onClick={() => setOpen(false)}/>
           </div>
           <div className='navbar-settings-body'>
             <div className={`navbar-settings-user-auth`}>
-              <Link to='/' className={`navbar-settings-logout ${loggedIn}`} onClick={logout}>Log out</Link>
-              <Link to='/login' className={`navbar-settings-login ${loggedIn}`} onClick={closeSettings}>Log in</Link>
-              <Link to='/signup' className={`navbar-settings-signup ${loggedIn}`} onClick={closeSettings}>Sign up</Link>
+              <Link to='/' className={`navbar-settings-logout ${context.loggedIn}`} onClick={logout}>Log out</Link>
+              <Link to='/login' className={`navbar-settings-login ${context.loggedIn}`} onClick={() => setOpen(false)}>Log in</Link>
+              <Link to='/signup' className={`navbar-settings-signup ${context.loggedIn}`} onClick={() => setOpen(false)}>Sign up</Link>
             </div>
           </div>
         </div>
