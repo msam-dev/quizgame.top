@@ -9,13 +9,12 @@ const Login = () => {
   const loginEndPoint: string = 'https://localhost:7025/user/login/';
 //const loginEndPoint: string = 'https://api.quizgame.top/user/login/';
 
-  const regex: RegExp = /^[a-zA-Z0-9-_]+$/;
+  const regex: RegExp = /^[a-zA-Z0-9_]+$/;
   const context = useQuizGameContext();
 
   const { message } = App.useApp();
 
   const navigate = useNavigate();
-  const loggedIn: boolean = context.username != '';
 
   const [loading, setLoading]                 = useState<boolean>(false);
   const [username, setUsername]               = useState<string>('');
@@ -32,7 +31,7 @@ const Login = () => {
     e.preventDefault(); // stops page from reloading
 
     message.info('You have been logged out');
-    context.clearUser();
+    context.logOut();
   };
 
   /**
@@ -48,7 +47,7 @@ const Login = () => {
       return;
     }
     if (!regex.test(username)) {
-      setError("Username can only contain letters, numbers, hyphens, and underscores.");
+      setError("Username can only contain letters, numbers, and underscores.");
       return;
     } 
 
@@ -73,13 +72,11 @@ const Login = () => {
       signal: controller.signal,
     })
     .then((response) => {
-      if (response.ok) { 
-        return response.json(); 
-      }else{
-        return response.json().then((errorData) => {
-          throw new Error(errorData.message || "Login failed");
-        });
-      }
+      if (response.ok) return response.json(); 
+
+      return response.json().then((errorData) => {
+        throw new Error(errorData.message || "Login failed");
+      });
     })
     .then((data) => {
       clearTimeout(timeout); 
@@ -93,7 +90,7 @@ const Login = () => {
       clearTimeout(timeout); 
       setLoading(false);
       message.destroy(); 
-      message.error(err.name==="AbortError" ? "Request timed out. Please try again." : err.message);
+      message.error(err.name==="AbortError" ? "Login request timed out. Please try again." : err.message);
     });
   };
 
@@ -101,14 +98,14 @@ const Login = () => {
     <div className='login-container'>
       <div className='login-inner-container'>
 
-        <form onSubmit={logOut} className={`logout-form ${loggedIn}`}>
+        <form onSubmit={logOut} className={`logout-form ${context.loggedIn}`}>
           <div className='message' >You are already logged in as: <b>{context.username}</b></div>
           <button type='submit' className='login-button'>
             Log Out
           </button>
         </form>
 
-        <form onSubmit={handleSubmit} className={`login-form ${loggedIn}`}>
+        <form onSubmit={handleSubmit} className={`login-form ${context.loggedIn}`}>
         <div className={`login-message ${messageClass}`}>{validationError}</div>
         <div className='login-field'>
           <label htmlFor='username' className='login-label'>Username:</label>
@@ -118,7 +115,7 @@ const Login = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             className='login-input'
-            maxLength={10}
+            maxLength={15}
           />
         </div>
         <div className='login-field'>
@@ -137,7 +134,7 @@ const Login = () => {
         </button>
       </form>
       </div> 
-      <div className={`login-signup ${loggedIn}`}> Don't have an account? <Link to='/signup'><u>Sign Up</u></Link></div>
+      <div className={`login-signup ${context.loggedIn}`}> Don't have an account? <Link to='/signup'><u>Sign Up</u></Link></div>
     </div> 
   );
 }

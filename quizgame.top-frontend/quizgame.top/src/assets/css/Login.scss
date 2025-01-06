@@ -32,7 +32,6 @@
 
 .login-message {
   margin-bottom: 10px;
-
   &.error{
     color: red;
   }
@@ -76,14 +75,13 @@
     background-color: var(--highlight-2-dark);
     cursor: wait;
   }
-
   &:hover{
     background-color: var(--highlight-2-dark);
   }
 }
 
 .login-signup{
-  padding-top: 4vh;
+  padding-top: 3vh;
   font-size: min(3.5vw, 15px);  
   &.true{
     display: none;
