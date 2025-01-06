@@ -1,9 +1,7 @@
 .flag-quiz-header{
   padding-top: min(25px,4vh);
   font-size: min(3.8vw, 20px);
-
   color: var(--txt-color-2);
-  
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -19,8 +17,8 @@
 
 .flag-quiz-exit{
   padding: 1px 4px 1px 3px;
-  text-decoration: none;
   color: var(--txt-color-2);
+  text-decoration: none;
 }
 
 .flag-quiz-exit-icon{
@@ -29,9 +27,12 @@
   font-size: 27px;
   color: var(--txt-color-1);
   background-color: var(--bg-color-2);
+  transition: all;
+  transition-duration:0.15s;
 
   &:hover{
-    outline: 3px solid var(--bg-color-2-light);
+    box-shadow: 0 0 3px 3px var(--shadow);
+    background-color: var(--bg-color-2-slightly-darker);
   }
 }
 
@@ -55,16 +56,14 @@
   margin: 5px;
   padding: 5px 7px 5px 7px;
   border-radius: 5px;
-
   outline: 3px solid var(--highlight-4);
   color: var(--txt-color-2);
   background-color: var(--highlight-4-light);
-  cursor: pointer;
-
   display: flex;
   flex-direction: row;  
   align-items: center;
-  
+  cursor: pointer;
+
   &.hide{
     display: none;
   }
