@@ -2,7 +2,6 @@
 wip   
 &nbsp;    
 ## Technical details
-### Architecture:
 - Domain management: Cloudflare (bought with GoDaddy)
 - Frontend: `React` + `Sass` (SCSS)
 - Backend: `C# ASP.NET Core`  
@@ -16,7 +15,7 @@ wip
 
 
 - For images of flags I'm using the [react-world-flags](https://www.npmjs.com/package/react-world-flags) package
-- For some React UI components I'm using the [Ant Design](https://ant.design/) package
+- For some UI components I'm using the [Ant Design](https://ant.design/) package
 
   &nbsp;    
 
