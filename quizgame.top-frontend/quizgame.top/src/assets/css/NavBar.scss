@@ -144,6 +144,7 @@
   color: var(--highlight-2-dark);
   border: 1px solid var(--highlight-2-dark);
   &:hover{
+    color: var(--highlight-2-dark);
     background-color: var(--highlight-2-very-light);
   }
 }
@@ -151,6 +152,7 @@
   color: var(--txt-color-1);
   background-color: var(--highlight-2);
   &:hover{
+    color: var(--txt-color-1);
     background-color: var(--highlight-2-dark);
   }
 }
