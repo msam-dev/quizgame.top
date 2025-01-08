@@ -126,7 +126,7 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className='login-input'
-            maxLength={20}
+            maxLength={30}
           />
         </div>
         <button type='submit' className={`login-button ${loading}`}>

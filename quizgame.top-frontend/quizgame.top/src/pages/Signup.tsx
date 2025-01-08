@@ -9,7 +9,6 @@ const Signup = () => {
   const signUpEndPoint: string = 'https://localhost:7025/user/signup/';
 //const signUpEndPoint: string = 'https://api.quizgame.top/user/signup/';
 
-  const regex: RegExp = /^[a-zA-Z0-9_]+$/;
   const context = useQuizGameContext();
 
   const { message } = App.useApp();
@@ -19,7 +18,6 @@ const Signup = () => {
   const [loading, setLoading]                 = useState<boolean>(false);
   const [username, setUsername]               = useState<string>('');
   const [password, setPassword]               = useState<string>('');
-  const [messageClass, setMessageClass]       = useState<string>('');
   const [validationError, setValidationError] = useState<string>('');  
 
   useEffect(() => { if(!context.loggedIn) warn(); }, []);
@@ -31,11 +29,6 @@ const Signup = () => {
       okText: 'I Understand',
     });
   }
-  
-  const setError = (errorMessage: string) => {
-    setValidationError(errorMessage);
-    setMessageClass('error');
-  };
 
   const logOut = (e: React.FormEvent) => {
     e.preventDefault(); // stops page from reloading
@@ -48,44 +41,73 @@ const Signup = () => {
    */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // stops page from reloading
-
-    // validation 
-    if (!username || !password) {
-      setError('Please enter Username and Password');
+    if(loading) return;
+    
+    const errorMessage = validate();
+    if(errorMessage != '')
+    {
+      setValidationError(errorMessage);
       return;
     }
-    if (!regex.test(username)) {
-      setError('Usernames can only contain letters, numbers, and underscores.');
-      return;
-    } 
 
-    setError('');
     requestSignup();
   };
+
+  /**
+   * validates the form input
+   */
+  const validate = () => {
+    if (!username || !password) return 'Please enter Username and Password';
+
+    if (!RegExp(/^[a-zA-Z0-9_]+$/).test(username)) return 'Usernames can only contain letters, numbers, and underscores.';
+    
+    if (!RegExp( /[A-Z]/).test(password)) return "Password must contain at least one uppercase letter.";
+    
+    if (!RegExp(/[a-z]/).test(password)) return "Password must contain at least one lowercase letter.";
+    
+    if (!RegExp(/\d/).test(password)) return "Password must contain at least one number.";
+    
+    if (!RegExp(/[!@#$%^&*(),.?":{}|<>]/).test(password))  return "Password must contain at least one special character.";
+    
+    return '';
+  }
 
   /**
    * Contacts the signup API endpoint and handles the response
    */
   const requestSignup = () => {
-    message.loading('Signing up, please wait...');
+    const controller = new AbortController(); 
+    const timeout = setTimeout(() => { controller.abort(); }, 5000); // 5 second timeout
+
+    message.loading('Signing up, please wait...', 0);
+    setLoading(true);
     
-    fetch(signUpEndPoint, {method: 'POST',
-      headers: { 'Content-Type': 'application/json',},
+    fetch(signUpEndPoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json",},
       body: JSON.stringify({ username, password }),
+      signal: controller.signal,
     })
     .then((response) => {
       if (response.ok) return response.json(); 
 
       return response.json().then((errorData) => {
-        throw new Error(errorData.message || 'Signup failed');
+        throw new Error(errorData.message || "Signup failed");
       });
     })
     .then((data) => {
-      message.success('Sign up successful! Welcome, '+ data.username);
+      clearTimeout(timeout); 
+      setLoading(false);
+      message.destroy(); // clears the loading message
+      message.success('Signup successful! Hello, '+ data.username);
+      context.setUser(data.username, data.token);
       navigate('/');
     })
     .catch((err: Error) => {
-      message.error(err.message);
+      clearTimeout(timeout); 
+      setLoading(false);
+      message.destroy(); 
+      message.error(err.name==="AbortError" ? "Signup request timed out. Please try again." : err.message);
     });
   };
   
@@ -101,7 +123,7 @@ const Signup = () => {
           </form>
           <form onSubmit={handleSubmit} className={`signup-form ${context.loggedIn}`}>
             <div className='signup-title'>Create a New User </div>
-            <div className={`signup-message ${messageClass}`}>{validationError}</div>
+            <div className={`signup-message`}>{validationError}</div>
             <div className='signup-field'>
               <label htmlFor='username' className='signup-label'>Username:</label>
               <input
@@ -122,7 +144,7 @@ const Signup = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className='signup-input'
-                maxLength={20}
+                maxLength={30}
                 minLength={8}
               />
             </div>
