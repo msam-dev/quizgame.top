@@ -27,7 +27,7 @@ const Signup = () => {
   const warn = () => {
     Modal.warning({ 
       title: 'Warning',
-      content: 'Steps have been taken to protect your data, but it is highly recommended you cre  te a completely new password for this account. Do not use passwords you\'ve used on other platforms.',
+      content: 'Steps have been taken to protect your data, but it is highly recommended you create a completely new password for this account. Do not use passwords you\'ve used on other platforms.',
       okText: 'I Understand',
     });
   }
