@@ -52,10 +52,10 @@ const Home = () => {
             <GrAchievement className='home-achievements-icon' />
             <div className='home-achievements-text'>Achievements</div>
           </Link>
-          <Link to='/about' className='home-about-container'>
+          <a href='https://github.com/msam-dev/quizgame.top/blob/main/ProjectDetails.md' className='home-about-container' target="_blank">
             <ImInfo className='home-about-icon' />
             <div className='home-about-text'>About</div>
-          </Link>
+          </a>
           <Link to='/leaderboards' className='home-leaderboard-container'>
             <ImListNumbered className='home-leaderboard-icon'/>     
             <div className='home-leaderboard-text'>Leaderboards</div>
