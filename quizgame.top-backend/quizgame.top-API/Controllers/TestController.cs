@@ -37,10 +37,7 @@ public class TestController(ILogger<TestController> logger) : ControllerBase
     [HttpGet("post/{id}")]
     public string PostEndpoint(int id)
     {
-        Data data = Data.Instance;
-
-        data.Count += id;
-        string message = $$""" { "message" : "Counter = {{data.Count}}" } """;
+        string message = $$""" { "message" : "input = id" } """;
 
 #if DEBUG
         string caller = Request.Headers.Referer.ToString();
