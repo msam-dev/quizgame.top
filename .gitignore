@@ -385,3 +385,4 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sw?
+/quizgame.top-backend/quizgame.top-API/appsettings.json
