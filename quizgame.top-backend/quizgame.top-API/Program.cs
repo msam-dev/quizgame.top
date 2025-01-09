@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using quizgame.top.API.Data;
+
 namespace quizgame.top.API;
 
 public class Program
@@ -25,6 +28,8 @@ public class Program
         });
 
         builder.Services.AddControllers();
+
+        builder.Services.AddDbContext<SQLiteContext>();
 
         WebApplication app = builder.Build();
 
