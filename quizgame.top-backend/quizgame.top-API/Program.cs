@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+using quizgame.top.API.Configurations;
 using quizgame.top.API.Data;
 
 namespace quizgame.top.API;
@@ -7,39 +7,29 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        string[] origins = ["https://quizgame.top"];
-
-        #if DEBUG 
-            origins = ["http://localhost:5173"]; 
-        #endif
-
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-        builder.Services.AddCors(options =>
-        {
-            options.AddPolicy(name: "policy1",
-                policy =>
-                {
-                    // WithOrigins() specifies which URL's are allowed to call endpoints that use this policy 
-                    policy.WithOrigins(origins)
-                    .AllowAnyHeader()
-                    .AllowAnyMethod();
-                });
-        });
+        builder.Services.ConfigureCors();
 
         builder.Services.AddControllers();
 
         builder.Services.AddDbContext<SQLiteContext>();
 
+        builder.Services.ConfigureCookies();
+
+        builder.Services.AddAuthorization();
+
         WebApplication app = builder.Build();
 
         app.UseCors();
 
-        //app.UseHttpsRedirection();
+        app.UseAuthentication();
 
         app.UseAuthorization();
 
         app.MapControllers();
+
+        //app.UseHttpsRedirection();
 
         app.Run();
     }
