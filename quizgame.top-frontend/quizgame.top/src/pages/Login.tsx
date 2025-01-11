@@ -1,15 +1,13 @@
 import '../assets/css/Login.scss';
+import * as constants from '../Constants';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useQuizGameContext } from '../assets/components/QuizGameContext';
 import { App } from 'antd';
 
-const Login = () => {
-  
-  const loginEndPoint: string = 'https://localhost:7025/user/login/';
-//const loginEndPoint: string = 'https://api.quizgame.top/user/login/';
 
-  const regex: RegExp = /^[a-zA-Z0-9_]+$/;
+const Login = () => {
+
   const context = useQuizGameContext();
 
   const { message } = App.useApp();
@@ -29,8 +27,6 @@ const Login = () => {
 
   const logOut = (e: React.FormEvent) => {
     e.preventDefault(); // stops page from reloading
-
-    message.info('You have been logged out');
     context.logOut();
   };
 
@@ -46,7 +42,7 @@ const Login = () => {
       setError('Please enter Username and Password');
       return;
     }
-    if (!regex.test(username)) {
+    if (!constants.userRegex.test(username)) {
       setError("Username can only contain letters, numbers, and underscores.");
       return;
     } 
@@ -65,25 +61,26 @@ const Login = () => {
     message.loading('Logging in, please wait...', 0);
     setLoading(true);
     
-    fetch(loginEndPoint, {
+    fetch(constants.loginEndPoint, {
       method: "POST",
       headers: { "Content-Type": "application/json",},
+      credentials: 'include',
       body: JSON.stringify({ username, password }),
       signal: controller.signal,
     })
     .then((response) => {
-      if (response.ok) return response.json(); 
-
+      if (response.ok) return; 
+      
       return response.json().then((errorData) => {
         throw new Error(errorData.message || "Login failed");
       });
     })
-    .then((data) => {
+    .then(() => {
       clearTimeout(timeout); 
       setLoading(false);
       message.destroy(); // clears the loading message
-      message.success('Login successful! Hello, '+ data.username);
-      context.setUser(data.username, data.token);
+      message.success('Login successful! Hello, '+ username);
+      context.setUser(username);
       navigate('/');
     })
     .catch((err: Error) => {
@@ -94,10 +91,31 @@ const Login = () => {
     });
   };
 
+  const score = () => {
+    fetch('https://localhost:7025/user/score/', {
+      method:'POST',
+      headers: { "Content-Type": "application/json",},
+      credentials: 'include',
+    })
+    .then((response) => {
+      if (response.ok) return response.json(); 
+
+      return response.json().then((errorData) => {
+        throw new Error(errorData.message || "Login failed");
+      });
+    })
+    .then((data) => {
+      message.success("score = "+data.score);
+    })
+    .catch((err: Error) => {
+      message.error(err.name==="AbortError" ? "err" : err.message);
+    });
+  };
+
   return (
     <div className='login-container'>
       <div className='login-inner-container'>
-
+      <button onClick={score}>score</button>
         <form onSubmit={logOut} className={`logout-form ${context.loggedIn}`}>
           <div className='message' >You are already logged in as: <b>{context.username}</b></div>
           <button type='submit' className='login-button'>

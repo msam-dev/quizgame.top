@@ -1,71 +1,98 @@
+import * as constants from '../../Constants';
+import { App } from 'antd';
 import { useState, useContext, createContext, useEffect} from 'react';
 
 /**
  * Context interface for QuizGame.top  
- * This interface is used so only a single context provider is needed for all desired state across QuizGame.top.
+ * This is used so only a single context provider is needed for all desired state across QuizGame.top.
  * This makes it easy to add additional state to the context in future.
  */
 interface QuizGameContextType {
   loggedIn: boolean;
   username: string;
-  token: string;
-  setUser: (username: string, token: string) => void;
+  setUser: (username: string) => void;
   logOut: () => void;
 }
 
 const QuizGameContext = createContext<QuizGameContextType | undefined>(undefined);
 
-/**
- * Provides common access to certain state across all components in QuizGame.top
- */
 export const useQuizGameContext = () => {
   const context = useContext(QuizGameContext);
-
-  if (context == undefined) throw new Error('useUserContext must be used within a UserProvider');
-
+  if (context == undefined) throw new Error('useQuizGameContext must be used within a provider');
   return context;
 };
-
-///////TODO: implement local storage
 
 interface ProviderProps { children: React.ReactNode; }
 
 export const QuizGameContextProvider = ({ children }: ProviderProps) => {
-
+  const { message } = App.useApp();
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const [username, setUsername] = useState<string>('');
-  const [token, setToken] = useState<string>('');
 
-  useEffect(() => {
-    // load from storage on mount
-    const storedUsername = localStorage.getItem('username');
-    const storedToken = localStorage.getItem('token');
-    if (storedUsername && storedToken) {
-      setUsername(storedUsername);
-      setToken(storedToken);
-    }
-  }, []);
-  
-  const setUser = (username: string, token: string) => {
+  const setUser = (username: string) => {
     setLoggedIn(true);
     setUsername(username);
-    setToken(token);
     localStorage.setItem('username', username);
-    localStorage.setItem('token', token);
   };
 
   const logOut = () => {
-    setLoggedIn(false);
-    setUsername('');
-    setToken('');
-    localStorage.removeItem('username');
-    localStorage.removeItem('token');
+    fetch(constants.logOutEndPoint, {
+      method: 'POST',
+      credentials: 'include',
+    }).then(() => {
+      setLoggedIn(false);
+      setUsername('');      
+      localStorage.removeItem('username');
+      message.info('You have been logged out');
+    });
   };
+
+  /**
+   * Contacts API to verify user is logged in or not and handles it accordingly
+   */
+  const checkAuthStatus = async () => {
+    if(!loggedIn) return;
+
+    fetch( constants.loggedInEndpoint, {
+      method: 'GET',
+      credentials: 'include',
+    })
+    .then((response) => {
+      if (response.ok) return response.json(); 
+
+      return response.json().then(() => {
+        throw new Error("logged out");
+      });
+    })
+    .then((data) => {
+      setUser(data.username);
+    })
+    .catch((err: Error) => {
+      logOut();
+    });
+  };
+
+  /**
+   * Checks user authentication on mount and the every 5 mins after that
+   */
+  useEffect(() => {
+    const user = localStorage.getItem('username');
+    if(!user) {
+      setLoggedIn(false);
+      setUsername('');  
+    } else {
+      setLoggedIn(true);
+      setUsername(user);  
+    }
+
+    checkAuthStatus();
+    const interval = setInterval(checkAuthStatus, 300000);
+    return () => clearInterval(interval);
+  }, []);
 
   const context: QuizGameContextType = {
     loggedIn,
     username,
-    token,
     setUser,
     logOut
   };
