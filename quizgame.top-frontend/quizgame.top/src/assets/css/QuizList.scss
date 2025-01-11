@@ -1,0 +1,38 @@
+.quizlist-container{
+  width: 100%;
+  height: 90vh;
+  min-height: 300px;
+  color: var(--txt-color-2);
+  display: flex;
+  justify-content: center;
+}
+
+.quizlist-inner-container{
+  margin: auto;
+  padding: min(20px, 3vw);
+  width: min(98vw, fit-content);
+  border-radius: 8px;
+  box-shadow: 0 0 15px var(--shadow); 
+}
+
+.quizlist-title{
+  font-size: min(6vw, 30px);  
+}
+
+.quizlist-links{
+  font-size: min(3.4vw, 22px);  
+  display: flex;
+  flex-direction: column;
+}
+
+.quizlist-link{
+  //text-decoration: underline;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.quizlist-link-container{
+  padding-top: min(20px, 3vw);
+
+}
