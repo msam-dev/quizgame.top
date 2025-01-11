@@ -9,6 +9,7 @@ const QuizList = () => {
         <div className='quizlist-links'>
           <div className='quizlist-link-container'> • <Link to='/World-Flag-Quiz-MC'        className='quizlist-link'>Flags of the World, Multiple Choice, Endless Mode</Link></div>
           <div className='quizlist-link-container'> • <Link to='/Africa-Flag-Quiz-MC'       className='quizlist-link'>Flags of Africa, Multiple Choice, Endless Mode</Link></div>
+          <div className='quizlist-link-container'> • <Link to='/Americas-Flag-Quiz-MC'     className='quizlist-link'>Flags of the Americas, Multiple Choice, Endless Mode</Link></div>
           <div className='quizlist-link-container'> • <Link to='/Asia-Flag-Quiz-MC'         className='quizlist-link'>Flags of Asia, Multiple Choice, Endless Mode</Link></div>
           <div className='quizlist-link-container'> • <Link to='/Australasia-Flag-Quiz-MC'  className='quizlist-link'>Flags of Australasia, Multiple Choice, Endless Mode</Link></div>
           <div className='quizlist-link-container'> • <Link to='/Europe-Flag-Quiz-MC'       className='quizlist-link'>Flags of Europe, Multiple Choice, Endless Mode</Link></div>
