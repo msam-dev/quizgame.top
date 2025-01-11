@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom';
 import '../assets/css/QuizList.scss';
 
 const QuizList = () => {
+  // TODO: "All Games List" can definitely be improved
+  // - make the list generate from a json file or something   
+  // - add search to the list
+  // - make the list a table and add filters 
   return (
     <div className='quizlist-container'>
       <div className='quizlist-inner-container'>
