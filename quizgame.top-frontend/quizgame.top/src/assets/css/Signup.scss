@@ -30,14 +30,9 @@
   }
 }
 
-.signup-message {
+.signup-message{
   margin-bottom: 10px;
-  &.error{
-    color: red;
-  }
-  &.success{
-    color: green;
-  }
+  color: red;
 }
 
 .signup-field {

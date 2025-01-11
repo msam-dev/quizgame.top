@@ -25,7 +25,6 @@ const MultipleChoiceQuiz = () => {
   const [questionCount, setQuestionCount] = useState<number>(0);
   const [score, setScore]                 = useState<number>(0);
 
-
   /**
    * Handles the logic when a user proceeds to the next question
    * TODO: update this to have better randomisation i.e. keep track of what is shown, try put tricky flags together

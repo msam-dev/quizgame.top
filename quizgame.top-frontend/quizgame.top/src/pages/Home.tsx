@@ -24,11 +24,11 @@ const Home = () => {
               <div className='home-popular-game-description'>Multiple choice answer, endless mode</div> 
             </div>
           </Link> 
-          <Link to='/world-flag-quiz-dd' className={`home-popular-game index-2`}>
+          <Link to='/asia-flag-quiz-mc' className={`home-popular-game index-2`}>
             <FcGlobe className='home-icon'/>
             <div className='home-popular-game-text'>
-              <div className='home-popular-game-title'>Flags of the world</div> 
-              <div className='home-popular-game-description'>Drop down answer, endless mode</div>
+              <div className='home-popular-game-title'>Flags of Asia</div> 
+              <div className='home-popular-game-description'>Multiple choice answer, endless mode</div>
             </div>
           </Link>
           <Link to='/africa-flag-quiz-mc' className={`home-popular-game index-3`}>

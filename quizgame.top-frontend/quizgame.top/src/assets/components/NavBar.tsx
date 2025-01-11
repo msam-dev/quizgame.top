@@ -18,7 +18,6 @@ const Navbar = () => {
     setOpen(false);
     navigate('/');
     context.logOut();
-    message.info('You have been logged out');
   }
 
   return (
