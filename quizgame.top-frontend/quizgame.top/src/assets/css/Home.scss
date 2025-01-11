@@ -130,6 +130,11 @@
   font-size: clamp(35px, 10vw, 55px);  
   transition: all;
   transition-duration: 0.2s;
+  display: flex;
+  justify-content: center;
+  // color: #7CB342;
+  // background-color: #0277BD;
+  // border-radius: 50%;
 }
 
 .home-popular-game-text{

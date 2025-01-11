@@ -1,11 +1,8 @@
 import '../assets/css/Home.scss';
 import { Link } from 'react-router-dom';
-import { ImInfo } from "react-icons/im";
+import { ImInfo, ImListNumbered } from "react-icons/im";
 import { GrAchievement } from "react-icons/gr";
-import { FcGlobe } from "react-icons/fc";
 import { useQuizGameContext } from '../assets/components/QuizGameContext';
-import { ImListNumbered } from "react-icons/im";
-
 const Home = () => {
 
   const context = useQuizGameContext();
@@ -18,30 +15,30 @@ const Home = () => {
         <div className='home-games-title'>Popular Quizzes</div>
         <div className='home-popular-games-container'>
           <Link to='/world-flag-quiz-mc' className={`home-popular-game index-1`} >
-            <FcGlobe className='home-icon'/>
+            <div className='home-icon'>🗺️</div>
             <div className='home-popular-game-text'>
               <div className='home-popular-game-title'>Flags of the World</div> 
               <div className='home-popular-game-description'>Multiple choice answer, endless mode</div> 
             </div>
           </Link> 
-          <Link to='/asia-flag-quiz-mc' className={`home-popular-game index-2`}>
-            <FcGlobe className='home-icon'/>
-            <div className='home-popular-game-text'>
-              <div className='home-popular-game-title'>Flags of Asia</div> 
-              <div className='home-popular-game-description'>Multiple choice answer, endless mode</div>
-            </div>
-          </Link>
           <Link to='/africa-flag-quiz-mc' className={`home-popular-game index-3`}>
-            <FcGlobe  className='home-icon'/>
+            <div className='home-icon'>🌍</div>
             <div className='home-popular-game-text'>
               <div className='home-popular-game-title'>Flags of Africa</div> 
               <div className='home-popular-game-description'>Multiple Choice, endless mode</div>
             </div>
           </Link>
-          <Link to='/europe-flag-quiz-mc' className={`home-popular-game index-4`}>
-            <FcGlobe className='home-icon'/>
+          <Link to='/asia-flag-quiz-mc' className={`home-popular-game index-2`}>
+            <div className='home-icon'>🌏</div>
             <div className='home-popular-game-text'>
-              <div className='home-popular-game-title'>Flags of Europe</div> 
+              <div className='home-popular-game-title'>Flags of Asia</div> 
+              <div className='home-popular-game-description'>Multiple choice answer, endless mode</div>
+            </div>
+          </Link>
+          <Link to='/Americas-Flag-Quiz-MC'  className={`home-popular-game index-4`}>
+            <div className='home-icon'>🌎</div>
+            <div className='home-popular-game-text'>
+              <div className='home-popular-game-title'>Flags of the Americas</div> 
               <div className='home-popular-game-description'>Multiple Choice, endless mode</div>
             </div>
           </Link>
