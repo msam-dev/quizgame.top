@@ -1,4 +1,4 @@
-const enum Continent {
+export const enum Continent {
   World        = "World",
   Asia         = "Asia",
   Africa       = "Africa",

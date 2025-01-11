@@ -1,4 +1,5 @@
 .flag-quiz-header{
+  max-width: 97vw;
   padding-top: min(25px,4vh);
   font-size: min(3.8vw, 20px);
   color: var(--txt-color-2);
@@ -8,7 +9,7 @@
 }
 
 .flag-quiz-title{
-  width: fit-content;
+  min-width: fit-content;
 }
 
 .flag-quiz-exit-container, .flag-quiz-score-container{
