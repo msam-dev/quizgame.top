@@ -15,6 +15,8 @@ public class User
     [Required]
     public required string Password { get; set; }
 
+    public int Score { get; set; } = 0;
+
     [EmailAddress]
     [MaxLength(200)]
     public string Email { get; set; } = "placeholder@placeholder.com";

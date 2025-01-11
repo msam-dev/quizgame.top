@@ -2,12 +2,12 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using quizgame.top.API.Data;
 using quizgame.top.API.Models;
-using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace quizgame.top.API.Controllers;
 
@@ -16,7 +16,7 @@ namespace quizgame.top.API.Controllers;
 /// </summary>
 [ApiController]
 [Route("user/")]
-public class UserController(ILogger<TestController> logger, SQLiteContext context) : ControllerBase
+public class UserController(ILogger<TestController> logger, IConfiguration config, SQLiteContext context) : ControllerBase
 {
 
     private readonly PasswordHasher<User> hasher = new PasswordHasher<User>();
@@ -46,8 +46,10 @@ public class UserController(ILogger<TestController> logger, SQLiteContext contex
                 return Unauthorized(new { message = "Invalid username or password." });
             }
 
-            string token = GenerateJwtToken(request.Username);
-            return Ok(new { request.Username, token });
+            bool authenticated = await AutheticateUser(user);
+            if (!authenticated) throw new Exception("Error, could not authenticate user after confirming password");
+
+            return Ok();
         }
         catch (Exception ex)
         {
@@ -85,38 +87,117 @@ public class UserController(ILogger<TestController> logger, SQLiteContext contex
             context.Users.Add(user);
             await context.SaveChangesAsync();
 
-            string token = GenerateJwtToken(request.Username);
+            bool authenticated = await AutheticateUser(user);
+            if (!authenticated) throw new Exception("Error, could not authenticate user after signup");
 
-            return Ok(new { request.Username, token });
+            return Ok();
         }
         catch (Exception ex)
         {
-            logger.LogError( ex, $"Signup endpoint threw and error while trying to create user: {request.Username}");
+            logger.LogError(ex, $"Signup endpoint threw and error while trying to create user: {request.Username}");
             return StatusCode(500, new { Message = "An error occurred while processing your signup request." }); // 500 Internal Server Error
         }
+    }
+
+    [Authorize]
+    [EnableCors("policy1")]
+    [HttpPost("score")]
+    public async Task<IActionResult> Score()
+    {
+        string? userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userId == null) return Unauthorized();
+
+        User? user = await context.Users.FindAsync(int.Parse(userId));
+        if (user == null) return NotFound();
+
+        user.Score += 1;
+        await context.SaveChangesAsync();
+        int score  = user.Score;
+        return Ok( new {score} );
+    }
+
+    [Authorize]
+    [EnableCors("policy1")]
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        try
+        {
+            await HttpContext.SignOutAsync();
+
+            Response.Cookies.Append("quizgame.top.Auth", "", new CookieOptions
+            {
+                Expires = DateTimeOffset.UtcNow.AddDays(-1), // Set expiration in the past
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.None,
+                Path = "/" 
+            });
+
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, $"Logout endpoint threw and error while trying to logout a user");
+            return StatusCode(500, new { Message = "An error occurred while processing your logout." }); // 500 Internal Server Error
+        }
+    }
+
+    /// <summary>
+    /// Endpoint to check if a user has a valid, current authentication
+    /// </summary>
+    [Authorize]
+    [EnableCors("policy1")]
+    [HttpGet("loggedin")]
+    public async Task<IActionResult> LoggedInAsync()
+    {
+        string? userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userId == null) return Unauthorized();
+
+        User? user = await context.Users.FindAsync(int.Parse(userId));
+        if (user == null) return NotFound();
+
+        return Ok(new { username = user.Username });
     }
 
     #endregion
 
     #region Methods
 
-    private string GenerateJwtToken(string username)
+    /// <summary>
+    /// Authenticates user using Cookies
+    /// </summary>
+    private async Task<bool> AutheticateUser(User user)
     {
-        string key = "abc123-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-        SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
-        SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+        try
+        {
+            List<Claim> claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            };
 
-        Claim[] claims = [ new Claim(ClaimTypes.Name, username) ];
+            string scheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+            AuthenticationProperties properties = new AuthenticationProperties
+            {
+                IsPersistent = true,
+                ExpiresUtc = DateTime.UtcNow.AddHours(48)
+            };
 
-        JwtSecurityToken token = new JwtSecurityToken(
-            issuer: "Jwt:Issuer",
-            audience: "Jwt:Audience",
-            claims: claims,
-            expires: DateTime.Now.AddHours(1),
-            signingCredentials: credentials
-        );
+            await HttpContext.SignInAsync(
+                scheme,
+                principal,
+                properties
+            );
 
-        return new JwtSecurityTokenHandler().WriteToken(token);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     #endregion
