@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../assets/css/Test.scss';
 
 /**
- * A proof of concept to be used as a template for connecting to API endpoints
+ * A proof of concept and experimenting with connecting endpoints
  */
 const Test = () => {
   

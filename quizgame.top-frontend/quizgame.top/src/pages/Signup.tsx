@@ -94,18 +94,18 @@ const Signup = () => {
       });
     })
     .then(() => {
-      clearTimeout(timeout); 
-      setLoading(false);
       message.destroy(); // clears the loading message
       message.success('Signup successful! Hello, '+ username);
       context.setUser(username);
       navigate('/');
     })
     .catch((err: Error) => {
-      clearTimeout(timeout); 
-      setLoading(false);
       message.destroy(); 
       message.error(err.name==='AbortError' ? 'Signup request timed out. Please try again.' : err.message);
+    })
+    .finally(() => {
+      clearTimeout(timeout); 
+      setLoading(false);   
     });
   };
   

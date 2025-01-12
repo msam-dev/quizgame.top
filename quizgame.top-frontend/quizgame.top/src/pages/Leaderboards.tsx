@@ -24,7 +24,6 @@ const Leaderboards = () => {
       headers: { 'Content-Type': 'application/json',},
     })
     .then((response) => {
-      setLoading(false)
       if (response.ok) return response.json(); 
 
       return response.json().then((errorData) => {
@@ -37,6 +36,9 @@ const Leaderboards = () => {
     })
     .catch((err: Error) => {
       setError(err.message || 'Failed to fetch leaderboard.');
+    })
+    .finally(() => {
+      setLoading(false)
     });
   }, []);
 
