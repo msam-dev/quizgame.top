@@ -31,12 +31,14 @@
   font-size: clamp(10px, 4vw, 14px);  
   padding: 10px;
 }
+
 .home-login, .home-signup{
   padding:5px 10px 5px 10px;
   margin: 2px;
   border-radius: 5px;
   cursor: pointer;
 }
+
 .home-login{
   color: var(--highlight-2-dark);
   border: 1px solid var(--highlight-2-dark);
@@ -45,6 +47,7 @@
     background-color: var(--highlight-2-very-light);
   }
 }
+
 .home-signup{
   color: var(--txt-color-1);
   background-color: var(--highlight-2);
@@ -91,37 +94,13 @@
 
   &:hover{
     outline-width: 3px;
-    color: black;
+    color: var(--txt-color-2);
     cursor: pointer;
     outline: 2px solid var(--bg-color-2-light);
     .home-icon{
       font-size: clamp(35px, 11vw, 60px);  
     }    
   }
-  // &.index-1{
-  //   background-color: var(--highlight-2-light);
-  //   &:hover{
-  //     outline: 2px solid var(--highlight-2);
-  //   }
-  // }
-  // &.index-2{
-  //   background-color: var(--highlight-3-light);
-  //   &:hover{
-  //     outline: 2px solid var(--highlight-3);
-  //   }
-  // }
-  // &.index-3{
-  //   background-color: var(--highlight-1-light);
-  //   &:hover{
-  //     outline: 2px solid var(--highlight-1);
-  //   }
-  // }
-  // &.index-4{
-  //   background-color: var(--highlight-4-light);
-  //   &:hover{
-  //     outline: 2px solid var(--highlight-4);
-  //   }
-  // }
 }
 
 .home-icon{
@@ -132,9 +111,6 @@
   transition-duration: 0.2s;
   display: flex;
   justify-content: center;
-  // color: #7CB342;
-  // background-color: #0277BD;
-  // border-radius: 50%;
 }
 
 .home-popular-game-text{
@@ -143,9 +119,11 @@
   flex-direction: column;
   justify-content: center;
 }
+
 .home-popular-game-title{
   font-size: min(5vw, 22px);  
 }
+
 .home-popular-game-description{
   font-size: min(4vw, 15px);  
 }
@@ -197,12 +175,15 @@
   transition: all;
   transition-duration: 0.2s;
 }
+
 .home-achievements-icon{
   color: var(--highlight-3);
 }
+
 .home-leaderboard-icon{
   color: var(--highlight-2-dark);
 }
+
 .home-about-icon{
   color: var(--highlight-1-dark);
 }

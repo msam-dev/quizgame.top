@@ -33,7 +33,6 @@
   cursor: pointer;
   &:hover{
     font-size: min(5vw, 30px);  
-
   }
 }
 
@@ -50,7 +49,7 @@
   td, th{
     padding-left: min(5px,0.5vw);
     padding-right: min(5px,0.5vw);
-    border: 1px solid #ddd;
+    border: 1px solid var(--shadow);
   }
 
   &.false{
@@ -63,7 +62,7 @@
 }
 
 .leaderboard-table-header{
-  background-color: #f4f4f4;
+  background-color: var(--table-header-color-1);
   th{
     padding: 5px 10px 5px 10px;
   }

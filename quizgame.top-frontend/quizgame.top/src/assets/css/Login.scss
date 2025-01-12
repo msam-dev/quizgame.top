@@ -33,10 +33,10 @@
 .login-message {
   margin-bottom: 10px;
   &.error{
-    color: red;
+    color: var(--highlight-5);
   }
   &.success{
-    color: green;
+    color: var(--highlight-1);
   }
 }
 
