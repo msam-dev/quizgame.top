@@ -30,8 +30,6 @@ public class UserController(ILogger<TestController> logger, IConfiguration confi
     [HttpPost("login")]
     public async Task<IActionResult> LoginAsync(LoginRequest request)
     {
-        Thread.Sleep(2000);
-
         try
         {
             User? user = await context.Users.FirstOrDefaultAsync(u => u.Username == request.Username);
@@ -49,7 +47,7 @@ public class UserController(ILogger<TestController> logger, IConfiguration confi
             bool authenticated = await AutheticateUser(user);
             if (!authenticated) throw new Exception("Error, could not authenticate user after confirming password");
 
-            return Ok();
+            return Ok(new { user.CorrectCount, user.AnswerCount, CreatedAt = user.CreatedAt.ToString("dd-MMM-yyyy")});
         }
         catch (Exception ex)
         {
@@ -65,7 +63,6 @@ public class UserController(ILogger<TestController> logger, IConfiguration confi
     [HttpPost("signup")]
     public async Task<IActionResult> SignupAsync(SignupRequest request)
     {
-        Thread.Sleep(2000);
         try
         {
             bool usernameExists = await context.Users.AnyAsync(u => u.Username == request.Username);
@@ -90,30 +87,43 @@ public class UserController(ILogger<TestController> logger, IConfiguration confi
             bool authenticated = await AutheticateUser(user);
             if (!authenticated) throw new Exception("Error, could not authenticate user after signup");
 
+            return Ok(new { CreatedAt = user.CreatedAt.ToString("dd-MMM-yyyy") });
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, $"Signup endpoint threw and error creating user: {request.Username}");
+            return StatusCode(500, new { Message = "An error occurred while processing your signup request." }); // Internal Server Error
+        }
+    }
+
+    /// <summary>
+    /// A user submits an answer
+    /// </summary>
+    /// <param name="correct">Did the user get the answer correct</param>
+    [Authorize]
+    [EnableCors("policy1")]
+    [HttpPost("add-answer")]
+    public async Task<IActionResult> AddAnswer(AddAnswerRequest request)
+    {
+        try
+        {
+            string? userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null) return Unauthorized();
+
+            User? user = await context.Users.FindAsync(int.Parse(userId));
+            if (user == null) return NotFound();
+
+            user.AnswerCount++;
+            if (request.Correct) user.CorrectCount++;
+
+            await context.SaveChangesAsync();
             return Ok();
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, $"Signup endpoint threw and error while trying to create user: {request.Username}");
-            return StatusCode(500, new { Message = "An error occurred while processing your signup request." }); // 500 Internal Server Error
+            logger.LogError(ex, "AddAnswer endpoint threw an error");
+            return StatusCode(500); // Internal Server Error
         }
-    }
-
-    [Authorize]
-    [EnableCors("policy1")]
-    [HttpPost("score")]
-    public async Task<IActionResult> Score()
-    {
-        string? userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (userId == null) return Unauthorized();
-
-        User? user = await context.Users.FindAsync(int.Parse(userId));
-        if (user == null) return NotFound();
-
-        user.Score += 1;
-        await context.SaveChangesAsync();
-        int score  = user.Score;
-        return Ok( new {score} );
     }
 
     [Authorize]
@@ -138,8 +148,8 @@ public class UserController(ILogger<TestController> logger, IConfiguration confi
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, $"Logout endpoint threw and error while trying to logout a user");
-            return StatusCode(500, new { Message = "An error occurred while processing your logout." }); // 500 Internal Server Error
+            logger.LogError(ex, "Logout endpoint threw an error");
+            return StatusCode(500, new { Message = "An error occurred while processing your logout." }); // Internal Server Error
         }
     }
 
@@ -158,6 +168,32 @@ public class UserController(ILogger<TestController> logger, IConfiguration confi
         if (user == null) return NotFound();
 
         return Ok(new { username = user.Username });
+    }
+
+    record struct LeaderboardEntry(string Username, int AnswerCount, int CorrectCount, int Score);
+
+    /// <summary>
+    /// Endpoint to get leaderboard of the top 20 users as JSON
+    /// </summary>
+    [EnableCors("policy1")]
+    [HttpGet("leaderboard")]
+    public async Task<IActionResult> Leaderboard()
+    {
+        Thread.Sleep(3000);
+        // Using anonymous type to return leaderboard as JSON
+        List<LeaderboardEntry> leaderboard = await context.Users
+            .Select(u => new LeaderboardEntry 
+            {
+                Username = u.Username,
+                AnswerCount = u.AnswerCount,
+                CorrectCount = u.CorrectCount,
+                Score = (u.CorrectCount - (u.AnswerCount - u.CorrectCount))
+            })
+            .OrderByDescending(l => l.Score)
+            .Take(20) // Limit to top 20
+            .ToListAsync();
+
+        return Ok(leaderboard);
     }
 
     #endregion
@@ -200,6 +236,11 @@ public class UserController(ILogger<TestController> logger, IConfiguration confi
         }
     }
 
+    private int CalculateScore(int answerCount, int correctCount)
+    {
+        // TODO: improve score formula
+        return correctCount - (answerCount - correctCount);
+    }
     #endregion
 
 }

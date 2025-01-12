@@ -9,7 +9,7 @@ public class SQLiteContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder model)
     {
-        // this method is redundant, but leaving it here incase i need to implement it in future
+        // this method is redundant, but leaving it here incase i need OnModelCreating in future
         base.OnModelCreating(model);
     }
 

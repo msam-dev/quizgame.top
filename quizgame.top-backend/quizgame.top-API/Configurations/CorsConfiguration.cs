@@ -7,7 +7,7 @@ public static class CorsConfiguration
         string[] origins = ["https://quizgame.top"];
 
         #if DEBUG
-                origins = ["https://localhost:5174"];
+                origins = ["https://localhost:5173"];
         #endif
 
         services.AddCors(options =>

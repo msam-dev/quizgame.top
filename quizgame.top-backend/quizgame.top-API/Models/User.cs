@@ -15,11 +15,12 @@ public class User
     [Required]
     public required string Password { get; set; }
 
-    public int Score { get; set; } = 0;
+    public int AnswerCount { get; set; } = 0;
+    public int CorrectCount { get; set; } = 0;
 
     [EmailAddress]
     [MaxLength(200)]
-    public string Email { get; set; } = "placeholder@placeholder.com";
+    public string Email { get; set; } = "placeholder@placeholder.com"; //Not currently supporting email validation but will eventually
 
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public DateTime CreatedAt { get; set; }
