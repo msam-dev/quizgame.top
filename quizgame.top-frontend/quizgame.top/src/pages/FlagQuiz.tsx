@@ -123,6 +123,7 @@ const MultipleChoiceQuiz = ({quizTitle, region, countries} : MultipleChoiceQuizP
       }
     }
 
+    context.addAnswer(correct);
     if(correct) setScore(score+1);
     if(context.loggedIn) requestAddAnswer(correct);
     setNextClass('show');

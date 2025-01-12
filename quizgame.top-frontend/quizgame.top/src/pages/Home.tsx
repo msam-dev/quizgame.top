@@ -45,6 +45,10 @@ const Home = () => {
         </div>
         <Link to='/quiz-list' className='home-list-link'>View Full List of Quizzes</Link>
         <div className='home-links'>
+          <Link to='/leaderboards' className='home-leaderboard-container'>
+            <ImListNumbered className='home-leaderboard-icon'/>     
+            <div className='home-leaderboard-text'>Leaderboards</div>
+          </Link>
           <Link to='/achievements' className='home-achievements-container'>
             <GrAchievement className='home-achievements-icon' />
             <div className='home-achievements-text'>Achievements</div>
@@ -53,10 +57,6 @@ const Home = () => {
             <ImInfo className='home-about-icon' />
             <div className='home-about-text'>About</div>
           </a>
-          <Link to='/leaderboards' className='home-leaderboard-container'>
-            <ImListNumbered className='home-leaderboard-icon'/>     
-            <div className='home-leaderboard-text'>Leaderboards</div>
-          </Link>
         </div>
         <div className={`home-greeting ${!loggedIn}`}>
           <div>Make an account to save your scores and join the leaderboard.</div> 

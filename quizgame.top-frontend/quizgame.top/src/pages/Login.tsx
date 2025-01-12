@@ -26,7 +26,7 @@ const Login = () => {
 
   const logOut = (e: React.FormEvent) => {
     e.preventDefault(); // stops page from reloading
-    context.logOut();
+    context.logOut(true);
   };
 
   /**
@@ -68,16 +68,16 @@ const Login = () => {
       signal: controller.signal,
     })
     .then((response) => {
-      if (response.ok) return; 
+      if (response.ok) return response.json();
       
       return response.json().then((errorData) => {
         throw new Error(errorData.message || 'Login failed');
       });
     })
-    .then(() => {
+    .then((data) => {
       message.destroy(); // clears the loading message
       message.success('Login successful! Hello, '+ username);
-      context.setUser(username);
+      context.setUser(data.username, data.answerCount, data.correctCount, data.createdAt);
       navigate('/');
     })
     .catch((err: Error) => {
