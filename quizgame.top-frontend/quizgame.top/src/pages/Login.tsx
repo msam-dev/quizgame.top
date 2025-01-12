@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { useQuizGameContext } from '../assets/components/QuizGameContext';
 import { App } from 'antd';
 
-
 const Login = () => {
 
   const context = useQuizGameContext();
@@ -43,7 +42,7 @@ const Login = () => {
       return;
     }
     if (!constants.userRegex.test(username)) {
-      setError("Username can only contain letters, numbers, and underscores.");
+      setError('Username can only contain letters, numbers, and underscores.');
       return;
     } 
 
@@ -62,8 +61,8 @@ const Login = () => {
     setLoading(true);
     
     fetch(constants.loginEndPoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json",},
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json',},
       credentials: 'include',
       body: JSON.stringify({ username, password }),
       signal: controller.signal,
@@ -72,7 +71,7 @@ const Login = () => {
       if (response.ok) return; 
       
       return response.json().then((errorData) => {
-        throw new Error(errorData.message || "Login failed");
+        throw new Error(errorData.message || 'Login failed');
       });
     })
     .then(() => {
@@ -87,35 +86,13 @@ const Login = () => {
       clearTimeout(timeout); 
       setLoading(false);
       message.destroy(); 
-      message.error(err.name==="AbortError" ? "Login request timed out. Please try again." : err.message);
-    });
-  };
-
-  const score = () => {
-    fetch('https://localhost:7025/user/score/', {
-      method:'POST',
-      headers: { "Content-Type": "application/json",},
-      credentials: 'include',
-    })
-    .then((response) => {
-      if (response.ok) return response.json(); 
-
-      return response.json().then((errorData) => {
-        throw new Error(errorData.message || "Login failed");
-      });
-    })
-    .then((data) => {
-      message.success("score = "+data.score);
-    })
-    .catch((err: Error) => {
-      message.error(err.name==="AbortError" ? "err" : err.message);
+      message.error(err.name==='AbortError' ? 'Login request timed out. Please try again.' : err.message);
     });
   };
 
   return (
     <div className='login-container'>
       <div className='login-inner-container'>
-      <button onClick={score}>score</button>
         <form onSubmit={logOut} className={`logout-form ${context.loggedIn}`}>
           <div className='message' >You are already logged in as: <b>{context.username}</b></div>
           <button type='submit' className='login-button'>

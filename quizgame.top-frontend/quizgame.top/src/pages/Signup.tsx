@@ -58,13 +58,13 @@ const Signup = () => {
 
     if (!RegExp(constants.userRegex).test(username)) return 'Usernames can only contain letters, numbers, and underscores.';
     
-    if (!RegExp( /[A-Z]/).test(password)) return "Password must contain at least one uppercase letter.";
+    if (!RegExp( /[A-Z]/).test(password)) return 'Password must contain at least one uppercase letter.';
     
-    if (!RegExp(/[a-z]/).test(password)) return "Password must contain at least one lowercase letter.";
+    if (!RegExp(/[a-z]/).test(password)) return 'Password must contain at least one lowercase letter.';
     
-    if (!RegExp(/\d/).test(password)) return "Password must contain at least one number.";
+    if (!RegExp(/\d/).test(password)) return 'Password must contain at least one number.';
     
-    if (!RegExp(/[!@#$%^&*(),.?":{}|<>]/).test(password))  return "Password must contain at least one special character.";
+    if (!RegExp(/[!@#$%^&*(),.?":{}|<>]/).test(password))  return 'Password must contain at least one special character.';
     
     return '';
   }
@@ -80,8 +80,8 @@ const Signup = () => {
     setLoading(true);
     
     fetch(constants.signUpEndPoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json",},
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json',},
       credentials: 'include',
       body: JSON.stringify({ username, password }),
       signal: controller.signal,
@@ -90,7 +90,7 @@ const Signup = () => {
       if (response.ok) return; 
 
       return response.json().then((errorData) => {
-        throw new Error(errorData.message || "Signup failed");
+        throw new Error(errorData.message || 'Signup failed');
       });
     })
     .then(() => {
@@ -105,7 +105,7 @@ const Signup = () => {
       clearTimeout(timeout); 
       setLoading(false);
       message.destroy(); 
-      message.error(err.name==="AbortError" ? "Signup request timed out. Please try again." : err.message);
+      message.error(err.name==='AbortError' ? 'Signup request timed out. Please try again.' : err.message);
     });
   };
   

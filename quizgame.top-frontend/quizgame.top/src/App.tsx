@@ -27,22 +27,22 @@ const App = () => {
     <Router>
       <Routes>
         <Route path='/' element={<Layout/>}>
-          <Route index                               element = {<Home        />} />
-          <Route path = '/Login'                     element = {<Login       />} />
-          <Route path = '/Signup'                    element = {<Signup      />} />
-          <Route path = '/Test'                      element = {<Test        />} />
-          <Route path = '/About'                     element = {<About       />} />
-          <Route path = '/Achievements'              element = {<Achievements/>} />
-          <Route path = '/Leaderboards'              element = {<Leaderboards/>} />
-          <Route path = '/Quiz-List'                 element = {<QuizList    />} />
-          <Route path = '/World-Flag-Quiz-MC'        element = {worldQuiz}       />
-          <Route path = '/Asia-Flag-Quiz-MC'         element = {asiaQuiz}        /> 
-          <Route path = '/Africa-Flag-Quiz-MC'       element = {africaQuiz}      /> 
-          <Route path = '/Europe-Flag-Quiz-MC'       element = {europeQuiz}      />
+          <Route index                               element = {<Home         />}/>
+          <Route path = '/Login'                     element = {<Login        />}/>
+          <Route path = '/Signup'                    element = {<Signup       />}/>
+          <Route path = '/Test'                      element = {<Test         />}/>
+          <Route path = '/About'                     element = {<About        />}/>
+          <Route path = '/Achievements'              element = {<Achievements />}/>
+          <Route path = '/Leaderboards'              element = {<Leaderboards />}/>
+          <Route path = '/Quiz-List'                 element = {<QuizList     />}/>
+          <Route path = '/World-Flag-Quiz-MC'        element = {worldQuiz       }/>
+          <Route path = '/Asia-Flag-Quiz-MC'         element = {asiaQuiz        }/> 
+          <Route path = '/Africa-Flag-Quiz-MC'       element = {africaQuiz      }/> 
+          <Route path = '/Europe-Flag-Quiz-MC'       element = {europeQuiz      }/>
           <Route path = '/Australasia-Flag-Quiz-MC'  element = {australasiaQuiz }/>
           <Route path = '/NorthAmerica-Flag-Quiz-MC' element = {northAmericaQuiz}/>
           <Route path = '/SouthAmerica-Flag-Quiz-MC' element = {southAmericaQuiz}/>
-          <Route path = '/Americas-Flag-Quiz-MC'     element = {americasQuiz}/>
+          <Route path = '/Americas-Flag-Quiz-MC'     element = {americasQuiz    }/>
         </Route>
       </Routes>
     </Router>

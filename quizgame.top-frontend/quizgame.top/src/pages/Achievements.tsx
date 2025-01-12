@@ -4,7 +4,7 @@ const Achievements = () => {
   return (
     <div className='login-container'>
       <div className='login-inner-container'>
-      Achievements
+        Under Construction
       </div>
     </div> 
   );
