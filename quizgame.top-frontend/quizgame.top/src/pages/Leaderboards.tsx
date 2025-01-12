@@ -50,7 +50,7 @@ const Leaderboards = () => {
 
   const infoModal =() => {
     Modal.info({ 
-      content: <>The leaderboard shows the top 20 users by score.<br/>The Score formula is:<br/>CorrectAnswers - (TotalAnswers - CorrectAnswers)</>
+      content: <>The leaderboard shows the top 20 users by score.<br/>For each correct answer you get a point, but for each incorrect answer you lose a point.</>
     });
   }
 
