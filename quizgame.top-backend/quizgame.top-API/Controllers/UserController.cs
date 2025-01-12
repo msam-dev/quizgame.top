@@ -47,7 +47,7 @@ public class UserController(ILogger<TestController> logger, IConfiguration confi
             bool authenticated = await AutheticateUser(user);
             if (!authenticated) throw new Exception("Error, could not authenticate user after confirming password");
 
-            return Ok(new { user.CorrectCount, user.AnswerCount, CreatedAt = user.CreatedAt.ToString("dd-MMM-yyyy")});
+            return Ok(new { user.Username, user.AnswerCount, user.CorrectCount, CreatedAt = user.CreatedAt.ToString("dd-MMM-yyyy")});
         }
         catch (Exception ex)
         {
@@ -87,7 +87,7 @@ public class UserController(ILogger<TestController> logger, IConfiguration confi
             bool authenticated = await AutheticateUser(user);
             if (!authenticated) throw new Exception("Error, could not authenticate user after signup");
 
-            return Ok(new { CreatedAt = user.CreatedAt.ToString("dd-MMM-yyyy") });
+            return Ok(new { user.Username, user.AnswerCount, user.CorrectCount, CreatedAt = user.CreatedAt.ToString("dd-MMM-yyyy") });
         }
         catch (Exception ex)
         {
@@ -167,7 +167,7 @@ public class UserController(ILogger<TestController> logger, IConfiguration confi
         User? user = await context.Users.FindAsync(int.Parse(userId));
         if (user == null) return NotFound();
 
-        return Ok(new { username = user.Username });
+        return Ok(new { user.Username, user.AnswerCount, user.CorrectCount, user.CreatedAt });
     }
 
     record struct LeaderboardEntry(string Username, int AnswerCount, int CorrectCount, int Score);
@@ -236,11 +236,6 @@ public class UserController(ILogger<TestController> logger, IConfiguration confi
         }
     }
 
-    private int CalculateScore(int answerCount, int correctCount)
-    {
-        // TODO: improve score formula
-        return correctCount - (answerCount - correctCount);
-    }
     #endregion
 
 }
