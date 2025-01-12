@@ -26,8 +26,8 @@ interface ProviderProps { children: React.ReactNode; }
 
 export const QuizGameContextProvider = ({ children }: ProviderProps) => {
   const { message } = App.useApp();
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  const [username, setUsername] = useState<string>('');
+  const [loggedIn, setLoggedIn]   = useState<boolean>(false);
+  const [username, setUsername]   = useState<string>('');
 
   const setUser = (username: string) => {
     setLoggedIn(true);
@@ -36,14 +36,14 @@ export const QuizGameContextProvider = ({ children }: ProviderProps) => {
   };
 
   const logOut = () => {
+    setLoggedIn(false);
+    setUsername('');      
+    localStorage.removeItem('username');
+    message.info('You have been logged out');
+    
     fetch(constants.logOutEndPoint, {
       method: 'POST',
       credentials: 'include',
-    }).then(() => {
-      setLoggedIn(false);
-      setUsername('');      
-      localStorage.removeItem('username');
-      message.info('You have been logged out');
     });
   };
 
@@ -61,7 +61,7 @@ export const QuizGameContextProvider = ({ children }: ProviderProps) => {
       if (response.ok) return response.json(); 
 
       return response.json().then(() => {
-        throw new Error("logged out");
+        throw new Error('logged out');
       });
     })
     .then((data) => {
@@ -69,6 +69,7 @@ export const QuizGameContextProvider = ({ children }: ProviderProps) => {
     })
     .catch((err: Error) => {
       logOut();
+      err;
     });
   };
 

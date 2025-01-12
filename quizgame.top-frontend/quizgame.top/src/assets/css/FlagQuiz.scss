@@ -17,19 +17,13 @@
 }
 
 .flag-quiz-exit{
-  padding: 1px 4px 1px 3px;
-  color: var(--txt-color-2);
-  text-decoration: none;
-}
-
-.flag-quiz-exit-icon{
   border-radius: 3px;  
-  padding-right: 2px;
   font-size: 27px;
   color: var(--txt-color-1);
   background-color: var(--bg-color-2);
   transition: all;
   transition-duration:0.15s;
+  cursor: pointer;
 
   &:hover{
     box-shadow: 0 0 3px 3px var(--shadow);

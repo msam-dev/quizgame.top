@@ -1,29 +1,28 @@
 import '../assets/css/FlagQuiz.scss';
-// import { Continent  }  from '../assets/data/Continents';
+import * as constants from '../Constants';
 import MultipleChoiceImage from '../assets/components/MultipleChoiceImage';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { HiArrowRight } from 'react-icons/hi';
-import { IoCaretBack } from 'react-icons/io5';
+import { IoCloseSharp } from 'react-icons/io5';
+import { message, Modal } from 'antd';
+import { useQuizGameContext } from '../assets/components/QuizGameContext';
 
 interface MultipleChoiceQuizProps {
   quizTitle:  string;
   region:     string;
-  countries:  Country[];
+  countries:  { code: string, name: string, continent: string }[];
 }
-
-type Country = {
-  code: string,
-  name: string,
-  continent: string
-};
-
 
 const MultipleChoiceQuiz = ({quizTitle, region, countries} : MultipleChoiceQuizProps) => {
 
   useEffect(() => { 
     newQuestion();
+    region;
   }, []);
+  
+  const context = useQuizGameContext();
+  const navigate = useNavigate();
 
   const [country1,  setCountry1]          = useState<string>('');
   const [country2,  setCountry2]          = useState<string>(''); 
@@ -40,13 +39,21 @@ const MultipleChoiceQuiz = ({quizTitle, region, countries} : MultipleChoiceQuizP
   const [questionCount, setQuestionCount] = useState<number>(0);
   const [score, setScore]                 = useState<number>(0);
 
+  const requestAddAnswer = (correct : boolean) => {
+    fetch(constants.addAnswerEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json',},
+      credentials: 'include',
+      body: JSON.stringify({ correct }),
+    });
+  };
+
   /**
    * Handles the logic when a user proceeds to the next question
    * TODO: update this to have better randomisation i.e. keep track of what is shown, try put tricky flags together
    */
   const newQuestion = () => {
     if(countries.length < 4) return;      
-    console.log(countries);
 
     const uniqueNumbers: Set<number> = new Set<number>;
     while (uniqueNumbers.size < 4) {
@@ -78,7 +85,7 @@ const MultipleChoiceQuiz = ({quizTitle, region, countries} : MultipleChoiceQuizP
    */ 
   const submit = (guess: string) => {
     if(submitted) return;
-
+    const correct: boolean = guess == answer;
     setClass1('inactive');
     setClass2('inactive');
     setClass3('inactive');
@@ -99,7 +106,7 @@ const MultipleChoiceQuiz = ({quizTitle, region, countries} : MultipleChoiceQuizP
         break;     
     }
 
-    if(guess != answer) {
+    if(!correct) {
       switch(guess) {
         case country1:
           setClass1('incorrect');
@@ -116,17 +123,28 @@ const MultipleChoiceQuiz = ({quizTitle, region, countries} : MultipleChoiceQuizP
       }
     }
 
-    if(guess == answer) setScore(score+1);
-
+    if(correct) setScore(score+1);
+    if(context.loggedIn) requestAddAnswer(correct);
     setNextClass('show');
     setSubmitted(true);
+  }
+
+  const exit = () => {
+    Modal.confirm({ 
+      title: 'Are you sure you want to end the quiz?',
+      okText: 'Confirm',
+      onOk: ()=>{
+        navigate('/')
+        if(context.loggedIn) message.info('your score has been updated');
+      },
+    });
   }
 
   return (
     <div className='flag-quiz-outer-container'>
       <div className='flag-quiz-header'>
         <div className='flag-quiz-exit-container'>
-          <Link to='/' className='flag-quiz-exit'><IoCaretBack className='flag-quiz-exit-icon'/> </Link>
+          <IoCloseSharp className='flag-quiz-exit' onClick={exit}/>
         </div>
         <div className='flag-quiz-title'>
           {quizTitle}
