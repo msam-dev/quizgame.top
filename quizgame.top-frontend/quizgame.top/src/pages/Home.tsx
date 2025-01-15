@@ -1,7 +1,8 @@
 import '../assets/css/Home.scss';
 import { Link } from 'react-router-dom';
 import { ImInfo, ImListNumbered } from 'react-icons/im';
-import { GrAchievement } from 'react-icons/gr';
+// import { GrAchievement } from 'react-icons/gr';
+import { LuGalleryVerticalEnd } from "react-icons/lu";
 import { useQuizGameContext } from '../assets/components/QuizGameContext';
 
 const Home = () => {
@@ -43,15 +44,24 @@ const Home = () => {
             </div>
           </Link>
         </div>
-        <Link to='/quiz-list' className='home-list-link'>View Full List of Quizzes</Link>
+        <Link to='/quiz-list' className='home-list-link'>{/*View Full List of Quizzes*/}&nbsp;</Link>
         <div className='home-links'>
           <Link to='/leaderboards' className='home-leaderboard-container'>
             <ImListNumbered className='home-leaderboard-icon'/>     
             <div className='home-leaderboard-text'>Leaderboards</div>
           </Link>
+
+          {/* 
           <Link to='/achievements' className='home-achievements-container'>
             <GrAchievement className='home-achievements-icon' />
             <div className='home-achievements-text'>Achievements</div>
+          </Link> 
+          */}
+
+          <Link to='/quiz-list' className='home-achievements-container'>
+            {/* placeholder while i work on achievements */}
+            <LuGalleryVerticalEnd className='home-achievements-icon' />
+            <div className='home-achievements-text'>View all quizzes</div>
           </Link>
           <a href='https://github.com/msam-dev/quizgame.top/blob/main/ProjectDetails.md' className='home-about-container' target='_blank'>
             <ImInfo className='home-about-icon' />
