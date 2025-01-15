@@ -179,7 +179,6 @@ public class UserController(ILogger<TestController> logger, IConfiguration confi
     [HttpGet("leaderboard")]
     public async Task<IActionResult> Leaderboard()
     {
-        Thread.Sleep(3000);
         // Using anonymous type to return leaderboard as JSON
         List<LeaderboardEntry> leaderboard = await context.Users
             .Select(u => new LeaderboardEntry 
