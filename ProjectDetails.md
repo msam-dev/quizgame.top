@@ -1,5 +1,5 @@
 ## Summary
-QuizGame.Top is a fun and educational online quiz app. Quizgame provides access to a variety of quizzes, user account creation, score tracking, global user leaderboards, achievements, and more. This site is an evolving project so more features are also on the way.
+QuizGame.Top is a fun and educational online quiz app. Quizgame provides access to a variety of quizzes, user account creation, score tracking, global user leaderboards, and more. This site is an evolving project so more features are also on the way.
 
 I like geography and [vexiollolgy](https://en.wikipedia.org/wiki/Vexillology) so I was looking around for a game to test my knowledge.  
 All the websites and apps I came across were disappointing or annoying in one way or another and I felt I could make a better game myself... and so quizgame.top was born.   
