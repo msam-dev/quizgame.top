@@ -1,0 +1,60 @@
+.achievements-container{
+  width: 100%;
+  height: 90vh;
+  min-height: 300px;
+  color: var(--txt-color-2);
+  display: flex;
+  justify-content: center;
+}
+
+.achievements-inner-container{
+  margin: auto;
+  padding: min(20px, 3vw);
+  width: clamp(200px, 90vw, 600px);
+  border-radius: 8px;
+  box-shadow: 0 0 15px var(--shadow); 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.achievements-medal-container{
+  height:14vw;
+  width: 15vw;
+
+  border: 1px solid blue;
+  margin: 20px;
+  display: flex;
+  //justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  cursor: pointer;
+  &:hover{
+    .achievements-icon{
+      font-size: 7vw;
+    }
+  }
+}
+
+.achievements-icon-container{
+}
+
+.achievements-medal-title{
+  font-size: 2vw;
+
+  transition: all;
+  transition-duration: 0.2s;
+}
+
+.achievements-icon{
+  color: var(--highlight-4);
+  background-color:  var(--table-header-color-1);
+  border: 0.7vw solid  var(--shadow);
+  font-size: 6vw;
+  padding: 1.5vw;
+  border-radius: 50%;
+  
+  transition: all;
+  transition-duration: 0.2s;
+}
