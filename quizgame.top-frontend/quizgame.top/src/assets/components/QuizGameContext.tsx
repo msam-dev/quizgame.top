@@ -126,7 +126,7 @@ export const QuizGameContextProvider = ({ children }: ProviderProps) => {
     const answerCount = localStorage.getItem('totalAnswers');
     const correctCount = localStorage.getItem('totalCorrect');
     const creation = localStorage.getItem('creationDate');
-    if(!user || !answerCount || !correctCount || !creation) {
+    if(!loggedIn || !user || !answerCount || !correctCount || !creation) {
       logOut(false);
     } else {
       setUser(user, parseInt(answerCount), parseInt(correctCount), creation);
